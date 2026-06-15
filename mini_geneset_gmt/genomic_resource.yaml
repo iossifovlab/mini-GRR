@@ -1,0 +1,12 @@
+type: gene_set_collection
+format: gmt
+filename: mini_geneset-gmt.gmt
+
+id: gmt_geneset
+
+meta:
+  summary: |
+    Toy GMT-format gene set collection resource
+
+  description: |
+    This toy gene set collection resource demonstrates how gene-set membership can be represented in GMT format. In GMT format, each row defines one gene set: the first column gives the gene set name, the second column gives a description, and the remaining columns list the genes assigned to that set. This resource represents the same toy gene-set membership as the map-format example: geneA is assigned to two toy gene sets, Function1 and Function2.
