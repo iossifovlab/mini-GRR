@@ -1,18 +1,15 @@
 - md5: 11060b23caa35c409459127662ac2af8
   name: dataprep.sh
   size: 30
-- md5: a2619dd69a6ebc6247bb30add740a8c3
+- md5: efb16754ce8d38183f70910f0cdb587f
   name: genomic_resource.yaml
-  size: 189
-- md5: c6affce7a23b3e79d2bf863f4e4a6c83
+  size: 541
+- md5: b4c3439c80f91fbc3d4273762b742b16
   name: mini.genome.fa
-  size: 63
-- md5: 40720e2bef4d54576055883e933b7254
+  size: 58
+- md5: 4fe794cc16a4d195b0c9991822df116b
   name: mini.genome.fa.fai
   size: 34
-- md5: dbe0b44c45cbb15175a00a12bf6e6ae5
-  name: sequence_plot.png
-  size: 47046
 - md5: 97ac7e4037f7100bdce45418dd6c490d
   name: statistics/chr1_statistic.yaml
   size: 301
@@ -22,6 +19,6 @@
 - md5: 6b62202d0b84f39fc21f2fc0dafe4c0a
   name: statistics/reference_genome_statistic.yaml
   size: 458
-- md5: 32874fed1e4abebd4f9a2def47a6b0e9
+- md5: a72206a332eff76f20e2a540d949e0e7
   name: statistics/stats_hash
   size: 54

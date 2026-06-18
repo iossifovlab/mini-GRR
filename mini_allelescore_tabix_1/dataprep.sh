@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Input file
-input_file="mini_npscore_tabix_1.tsv"
+input_file="mini_allelescore_tabix_1.tsv"
 
 # Compress the input file with bgzip while keeping the original
 bgzip -c "$input_file" > "${input_file}.gz"

@@ -1,19 +1,16 @@
 ---
 
 type: gene_models
-
 filename: mini_gtf.gtf
-
-format: "gtf"
-
+format: gtf
 
 meta: 
   summary: |
-    gtf gene model
+    Toy GTF gene models resource
 
   description: |
 
-    my description
+    This toy gene model resource demonstrates how transcript structures can be represented in GTF format. It represents the same minimal gene model as the toy RefSeq gene models resource, including one gene, one transcript, one exon, UTR, CDS, start codon, and stop codon features using 1-based GTF coordinates.
 
-#  labels:
-#    reference_genome: hg38/genomes/GRCh38-hg38
+  # labels:
+  #   reference_genome: mini_genome

@@ -6,7 +6,6 @@ table:
   filename: mini_allelescore_tabix_1.tsv.gz
   format: tabix
 
-  # defined by score_type
   chrom:
     name: chrom
   pos_begin:
@@ -20,11 +19,11 @@ table:
 
 # score values
 scores:
-  - id: np_tsv_1_num
-    name: an_np_score
+  - id: allele_tsv_1_num
+    name: an_allele_score
     type: float
     desc: |
-      a description
+      Toy numeric allele score
     large_values_desc: "more"
     small_values_desc: "less"
     histogram:
@@ -33,24 +32,23 @@ scores:
       view_range:
         min: 1
         max: 3
-      # y_log_scale: True
       
-  - id: np_tsv_1_cat
+  - id: allele_tsv_1_cat
     name: a_class
     type: str
     desc: |
-      a description
+      Toy categorical allele score
     histogram:
       type: categorical
-      # y_log_scale: True
 
 
 meta:
   summary: |
 
-    1-based tsv allele score
+    1-based tabix-indexed TSV allele score resource
+
 
   description: |
 
-    ![The score graphs](./scores_graph.png "SSSS")
+    This toy allele score resource demonstrates how allele-level scores can be stored in a tabix-indexed TSV file using 1-based coordinates. Each row represents a specific allele defined by chromosome, position, reference allele, and alternative allele, and provides both a numeric allele score and a categorical allele class.
 

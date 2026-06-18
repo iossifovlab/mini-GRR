@@ -1,132 +1,288 @@
 
-
 <html>
-<head>
-<style>
-h3,h4 {
-    margin-top:0.5em;
-    margin-bottom:0.5em;
-}
-table {
-    border-collapse: collapse;
-}
-th, td {
-    padding: 10px;
-}
-th {
-    font-size: 20px;
-}
-td {
-    font-size: 18px;
-}
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap">
+    <style>
+      body {
+        margin: 0;
+      }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    justify-content: center;
-}
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-.close {
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-}
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
+      .page-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 40px 100px;
+      }
 
-</style>
+            *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+      }
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
-            trigger.addEventListener("click", function () {
-                var modalId = this.getAttribute("data-modal-trigger");
-                var modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = "block";
-                    document.currentOpenModal = modal;
+      body {
+        color: #252e34;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: #5b778c;
+      }
+
+      h2 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3,h4 {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%
+      }
+
+      th {
+        background: #ecf1f6;
+      }
+
+      td,
+      th {
+        border: 1px solid #cfd8df;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+      }
+
+      tr {
+        height: 38px;
+      }
+
+      ul {
+        list-style-type: '-  ';
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #24699E;
+      }
+
+      a:hover {
+        color: #4C93C9;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #page-header {
+        display: flex;
+        align-items: center;
+        padding: 14px clamp(20px, 10%, 64px);
+        border-bottom: 1px solid #e4edf2;
+      }
+
+      #page-header a {
+        color: #24699E;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease-out;
+        font-size: 18px;
+      }
+
+      #page-header a:hover {
+        color: #4C93C9;
+      }
+
+      .histogram {
+        margin-bottom: 16px;
+      }
+
+      .histogram-thumbnail {
+        max-width: 200px;
+        cursor: pointer;
+      }
+
+      .text-muted {
+        color: #919191;
+      }
+
+      .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+
+      .scrollable-table-container thead {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+
+      .scrollable-table-container table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .scrollable-table-container th {
+        border: 0;
+        border-top: 1px solid #cfd8df;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container td {
+        border: 0;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container th:first-child,
+      .scrollable-table-container td:first-child {
+        border-left: 1px solid #cfd8df;
+      }
+      #chromosomes-table thead tr:nth-of-type(2) th {
+        border-top: none;
+      }
+
+      #resource-table {
+        margin-bottom: 70px;
+      }
+
+      #resource-table th {
+        text-align: end;
+        width: 100px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        justify-content: center;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .close {
+        float: right;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      table {
+    table-layout: fixed;
+}
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
+                trigger.addEventListener("click", function () {
+                    var modalId = this.getAttribute("data-modal-trigger");
+                    var modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = "flex";
+                        document.currentOpenModal = modal;
+                    }
+                });
+            });
+
+            document.querySelectorAll(".close").forEach(function (closeButton) {
+                closeButton.addEventListener("click", function () {
+                    this.closest(".modal").style.display = "none";
+                    document.currentOpenModal = null;
+                });
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target.classList.contains("modal")) {
+                    event.target.style.display = "none";
+                    document.currentOpenModal = null;
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && document.currentOpenModal) {
+                    document.currentOpenModal.style.display = "none";
+                    document.currentOpenModal = null;
                 }
             });
         });
-
-        document.querySelectorAll(".close").forEach(function (closeButton) {
-            closeButton.addEventListener("click", function () {
-                this.closest(".modal").style.display = "none";
-                document.currentOpenModal = null;
-            });
-        });
-
-        window.addEventListener("click", function (event) {
-            if (event.target.classList.contains("modal")) {
-                event.target.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && document.currentOpenModal) {
-                document.currentOpenModal.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-    });
-</script>
-</head>
-    <body>
-    <h1>Resource</h1>
+    </script>
+  </head>
+  <body>
+    <nav id="page-header">
+      <a href="../index.html">← Back to main page</a>
+    </nav>
+    <div class="page-content">
+    <h2>Resource</h2>
     <div>
-        <table border="1">
+        <table id="resource-table">
             <tr>
-                <td>
-                    <b>Id:</b>
-                </td>
+                <th>Id</th>
                 <td>mini_positionscore_tsv_1_twoscores</td>
             </tr>
             <tr>
-                <td>
-                    <b>Type:</b>
-                </td>
+                <th>Type</th>
                 <td>position_score</td>
             </tr>
             <tr>
-                <td>
-                    <b>Version:</b>
-                </td>
+                <th>Version</th>
                 <td>0</td>
             </tr>
             <tr>
-                <td><b>Summary:</b></td>
+                <th>Summary</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>1-based tsv position score</p>
+                        <template shadowrootmode="open">1-based tsv position score
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Description:</b>
-                </td>
+                <th>Description</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>my description
+                        <template shadowrootmode="open">
+                             <style>
+                              img {
+                                max-width: min(100%, 800px);
+                                max-height: 50vh;
+                                width: auto;
+                                height: auto;
+                                display: block;
+                              }
+
+                              a {
+                                text-decoration: none;
+                                color: #24699E;
+                              }
+
+                              a:hover {
+                                color: #4C93C9;
+                              }
+                            </style><p>my description
 <img src="scores_graph.png" alt="My Position Score Image" /></p>
 
                         </template>
@@ -134,9 +290,7 @@ td {
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Labels:</b>
-                </td>
+                <th>Labels</th>
                 <td>
                 
                 </td>
@@ -148,16 +302,27 @@ td {
 
 
 
-<h1>Scores</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Type</th>
-        <th>Default annotation</th>
-        <th>Description</th>
-        <th>Histogram</th>
-        <th>Range</th>
-    </tr><tr class="score-definition">
+<h2>Scores (2)</h2>
+<div class="scrollable-table-container">  
+<table>
+    <colgroup>
+        <col style="width: 15%">
+        <col style="width: 6%">
+        <col style="width: 15%">
+        <col>
+        <col style="width: 220px">
+        <col style="width: 15%">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Default annotation</th>
+            <th>Description</th>
+            <th>Histogram</th>
+            <th>Range</th>
+        </tr>
+    </thead><tr class="score-definition">
             <td>pos_tsv_1</td>
             <td>float</td>
             
@@ -170,23 +335,23 @@ td {
             <td>
                 <div>a description</div>
                 
-                    <div style="color: rgb(145,145,145)">
+                    <div class="text-muted">
                         Small values desc: less
                     </div>
                 
                 
-                    <div style="color: rgb(145,145,145)">
+                    <div class="text-muted">
                         Large values desc: more
                     </div>
                 
             </td>
-            <td>
+            <td style="text-align: center">
                 
                 
                 <img src="statistics/histogram_pos_tsv_1.png"
                     alt="HISTOGRAM FOR pos_tsv_1"
                     title=pos_tsv_1
-                    style="width: 200px; cursor: pointer;"
+                    class="histogram-thumbnail"
                     data-modal-trigger="modal-pos_tsv_1"></td>
             <td>
                 [0, 0.9]</td>
@@ -205,35 +370,38 @@ td {
                 
                 
             </td>
-            <td>
+            <td style="text-align: center">
                 
                 
                 <img src="statistics/histogram_pos_tsv_1_st.png"
                     alt="HISTOGRAM FOR pos_tsv_1_st"
                     title=pos_tsv_1_st
-                    style="width: 200px; cursor: pointer;"
+                    class="histogram-thumbnail"
                     data-modal-trigger="modal-pos_tsv_1_st"></td>
             <td>
                 bad, good</td>
         </tr><div id="modal-pos_tsv_1" class="modal">
-            <div class="modal-content" style="padding: 10px 20px; background-color: #fff; height: fit-content; width: fit-content;">
+            <div class="modal-content">
                 <span title=pos_tsv_1 class="close">&times;</span>
                 <img src="statistics/histogram_pos_tsv_1.png"
                     alt="HISTOGRAM FOR pos_tsv_1"
-                    title=pos_tsv_1>
+                    title=pos_tsv_1
+                    style="max-width: min(100%, 800px);">
             </div>
         </div><div id="modal-pos_tsv_1_st" class="modal">
-            <div class="modal-content" style="padding: 10px 20px; background-color: #fff; height: fit-content; width: fit-content;">
+            <div class="modal-content">
                 <span title=pos_tsv_1_st class="close">&times;</span>
                 <img src="statistics/histogram_pos_tsv_1_st.png"
                     alt="HISTOGRAM FOR pos_tsv_1_st"
-                    title=pos_tsv_1_st>
+                    title=pos_tsv_1_st
+                    style="max-width: min(100%, 800px);">
             </div>
         </div>
 </table>
+</div>
 
 
-    <h1>Files</h1>
+    <h2 style="margin-top: 70px;">Files</h2>
     <table>
     <thead>
         <tr>
@@ -281,5 +449,6 @@ td {
             </tr>
     </tbody>
     </table>
-    </body>
+    </div>
+  </body>
 </html>

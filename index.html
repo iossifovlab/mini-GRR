@@ -1,0 +1,1291 @@
+<html>
+    <head>
+     <meta charset="utf-8">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
+    <style>
+
+      body {
+        margin: 0;
+      }
+
+            *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+      }
+
+      body {
+        color: #252e34;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: #5b778c;
+      }
+
+      h2 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3,h4 {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%
+      }
+
+      th {
+        background: #ecf1f6;
+      }
+
+      td,
+      th {
+        border: 1px solid #cfd8df;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+      }
+
+      tr {
+        height: 38px;
+      }
+
+      ul {
+        list-style-type: '-  ';
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #24699E;
+      }
+
+      a:hover {
+        color: #4C93C9;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #page-header {
+        display: flex;
+        align-items: center;
+        padding: 14px clamp(20px, 10%, 64px);
+        border-bottom: 1px solid #e4edf2;
+      }
+
+      #page-header a {
+        color: #24699E;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease-out;
+        font-size: 18px;
+      }
+
+      #page-header a:hover {
+        color: #4C93C9;
+      }
+
+      .histogram {
+        margin-bottom: 16px;
+      }
+
+      .histogram-thumbnail {
+        max-width: 200px;
+        cursor: pointer;
+      }
+
+      .text-muted {
+        color: #919191;
+      }
+
+      .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+
+      .scrollable-table-container thead {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+
+      .scrollable-table-container table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .scrollable-table-container th {
+        border: 0;
+        border-top: 1px solid #cfd8df;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container td {
+        border: 0;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container th:first-child,
+      .scrollable-table-container td:first-child {
+        border-left: 1px solid #cfd8df;
+      }
+      #chromosomes-table thead tr:nth-of-type(2) th {
+        border-top: none;
+      }
+
+      td, th {
+        padding: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #search-container {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: white;
+        height: 70px;
+      }
+
+      #type-label {
+        color: #5b778c;
+      }
+
+      #type-filter {
+        border: 1px solid #85a2b9;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 18px;
+        padding-left: 10px;
+        background: white;
+      }
+
+      #type-filter:hover {
+        cursor: pointer;
+      }
+
+      #search-field {
+        width: 40%;
+        border: 1px solid #85a2b9;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 18px;
+        padding: 0 10px;
+      }
+
+      input::placeholder {
+        color: #ababab;
+      }
+
+      #type-filter:focus-visible,
+      #search-field:focus-visible,
+      #type-filter:focus,
+      #search-field:focus {
+        outline-color: #85a2b9;
+      }
+
+      .search-info {
+        text-align: center;
+        font-size: 0.9em;
+        color: #5b778c;
+        word-break: break-word;
+        margin: 0 10%;
+      }
+
+      .loading,
+      .searching {
+        text-align: center;
+        font-size: larger;
+      }
+
+      .pageButton {
+        border: none;
+        background: none;
+        color: #24699E;
+        cursor: pointer;
+        padding: 3px;
+        margin: 0 3px;
+      }
+
+      .pageButton.active {
+        color: #1a2835;
+        cursor: default;
+      }
+
+      .pageButton.hide {
+        display: none;
+      }
+
+      #status,
+      #status-error {
+        margin-left: 10%;
+        margin-top: 8px;
+        font-size: 0.875em;
+        color: #5b778c;
+      }
+
+      #status-error {
+        color: #d74b59;
+        text-align: center;
+      }
+
+      #table-wrapper {
+        margin: 10px 10%;
+      }
+
+      #resource-table {
+        border: 1px solid #cfd8df;
+        width: 100%;
+        box-sizing: border-box;
+        table-layout: fixed;
+        contain: layout style;
+      }
+
+      .version-cell {
+        width: 5%;
+      }
+
+      .size-cell,
+      .type-cell {
+        width: 10%;
+      }
+
+      .id-wrapper {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .id-cell {
+        min-width: 50%;
+        width: 50%;
+      }
+
+      .copy-icon {
+        font-size: 20px;
+        color: #B9D3E7;
+      }
+
+      .copy-icon:hover {
+        cursor: pointer;
+        color: #85A2B9;
+      }
+
+      #nav-about {
+        margin-left: auto;
+      }
+
+      #id-col-header {
+        cursor: pointer;
+        user-select: none;
+      }
+
+      #id-sort-indicator {
+        margin-left: 2px;
+        font-size: 18px;
+        vertical-align: middle;
+        color: #5b778c;
+      }
+
+      #resource-table th {
+        position: relative;
+        overflow: visible;
+      }
+
+      .col-resizer {
+        position: absolute;
+        right: -3px;
+        top: 0;
+        height: 100vh;
+        width: 6px;
+        cursor: col-resize;
+        user-select: none;
+        z-index: 1;
+      }
+
+      .col-resizer::after {
+        content: '';
+        display: block;
+        width: 2px;
+        height: 100%;
+        margin: 0 auto;
+        background: #cfd8df;
+        transition: background 0.15s;
+      }
+
+      .col-resizer:hover::after,
+      .col-resizer.resizing::after {
+        background: #85a2b9;
+      }
+
+      #col-drag-line {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 1.5px;
+        height: 100vh;
+        background: #cfd8df;
+        display: none;
+        pointer-events: none;
+        will-change: transform;
+      }
+    </style>
+ </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module">
+        import sqlite3 from "https://cdn.jsdelivr.net/npm/@sqlite.org/sqlite-wasm@3.51.2-build6/dist/index.mjs";
+
+
+        const start = async (sqlite3) => {
+          const response = await fetch(`${window.location.origin}/.CONTENTS.sqlite3.gz?v=b2f3b2689bae04b29f4374d64231e750`)
+          const ds = new DecompressionStream('gzip');
+          const decompressedResponse = new Response(response.body.pipeThrough(ds));
+          const arrayBuffer = await decompressedResponse.arrayBuffer()
+          const p = await sqlite3.wasm.allocFromTypedArray(arrayBuffer)
+          const db = new sqlite3.oo1.DB();
+          let deserialize_flags = sqlite3.capi.SQLITE_DESERIALIZE_FREEONCLOSE;
+          const rc = await sqlite3.capi.sqlite3_deserialize(db.pointer, 'main', p, arrayBuffer.byteLength, arrayBuffer.byteLength, deserialize_flags);
+          await db.checkRc(rc);
+          window.sqlite3 = db;
+          window.sqlite3.query = (sql) => {
+            const rows =  window.sqlite3.exec({sql: sql, returnValue: "resultRows"});
+            console.log(`Executed query: ${sql}, got ${rows.length} rows`);
+            console.log(rows);
+            return rows;
+          }
+          // window.sqlite3.query = (sql) => {
+          //  return window.sqlite3.exec({sql: sql, returnValue: "resultRows"})
+          //}
+        };
+
+        const initializeSQLite = async () => {
+          try {
+            console.log('Loading and initializing SQLite3 module...');
+            const sqlite3 = await sqlite3InitModule();
+            console.log('Done initializing.');
+            await start(sqlite3);
+          } catch (err) {
+            console.error('Initialization error:', err.name, err.message);
+          }
+        };
+
+
+        const rowData = {}
+        $(".contents > tbody > tr").each((index, row) => {
+            const id = $(row).attr("id");
+            const children = $(row).find("td");
+            rowData[id] = {
+                "type": children[0].textContent.trim(),
+                "id": children[1].getElementsByTagName("a")[0].textContent.trim(),
+                "version": children[2].textContent.trim(),
+                "sizeInBytes": children[3].textContent.trim(),
+                "summary": children[4].textContent.trim(),
+                "url": $(children[1].getElementsByTagName("a")[0]).attr("href").trim(),
+            };
+        })
+        window.rowData = rowData;
+
+        let sortOrder = 'none'; // 'none' | 'asc' | 'desc'
+        let lastIds = [];
+
+        function sortedIds(ids) {
+            if (sortOrder === 'none') return ids;
+            const sorted = [...ids].sort((a, b) => a.localeCompare(b));
+            return sortOrder === 'desc' ? sorted.reverse() : sorted;
+        }
+
+        function applyRefreshData(ids) {
+            lastIds = ids;
+            refreshData(sortedIds(ids));
+        }
+
+        function UpdateStatus() {
+            const status = $(`#status`);
+            const statusError = $(`#status-error`);
+            if (window.last_error) {
+                statusError.show();
+                statusError.text(`Query failed due to syntax error, debugging information is in the console.`);
+            }
+            else {
+                statusError.text("");
+                statusError.hide();
+            }
+            status.text(`${window.currentIds.length} resources`);
+        }
+
+        function refreshData(ids) {
+            // Check both length and order so re-sorting the same set still re-renders.
+            if (ids.length === (window.currentIds || []).length
+                    && ids.every((id, i) => id === window.currentIds[i])) {
+                UpdateStatus();
+                return;
+            }
+            window.currentIds = ids;
+
+            const rows = $(".contents > tbody > tr")
+            rows.hide();
+            for (const [index, rowId] of ids.entries()) {
+                let row = $(rows[index]);
+                let rowData = window.rowData[rowId];
+                let cells = row.children("td");
+                cells[0].textContent = rowData.type;
+                cells[1].title = rowData.id;
+                $(cells[1]).find("a").attr("href", rowData.url).text(rowData.id);
+                $(cells[1]).children("div").children("span")[0].className = `material-symbols-outlined copy-icon ${rowData.id}`;
+                cells[2].textContent = rowData.version;
+                cells[3].textContent = rowData.sizeInBytes;
+                cells[4].textContent = rowData.summary;
+                cells[4].title = rowData.summary;
+                row.show();
+            }
+
+            UpdateStatus();
+        }
+
+        window.dbLoaded = new Promise(async (resolve) => {
+            await initializeSQLite()
+            const all_ids_result = await window.sqlite3.query("SELECT full_id FROM contents;")
+            window.all_ids = new Set(all_ids_result.map((row) => row[0]))
+            const all_types_result = await window.sqlite3.query("SELECT DISTINCT type FROM contents ORDER BY type ASC;")
+            const typeFilter = $("#type-filter");
+            for (const row of all_types_result) {
+                const type = row[0];
+                const option = document.createElement("option");
+                option.value = type;
+                option.textContent = type;
+                typeFilter.append(option);
+            }
+            applyRefreshData(Array.from(window.all_ids))
+
+            resolve(window.sqlite3)
+        });
+
+        $(".loading").hide()
+
+        $("#search-container").show()
+
+        async function doSearch() {
+            await window.dbLoaded;
+            const searchValue = $("#search-field").val().trim();
+            const typeFilter = $("#type-filter").val();
+            if (searchValue === "" && typeFilter === "all") {
+                window.last_error = null;
+                applyRefreshData(Array.from(window.all_ids))
+                return;
+            }
+
+            $(".searching").show()
+
+            const ids = new Set();
+
+            let query = "";;
+            if (searchValue !== "" && typeFilter !== "all") {
+                query = `SELECT full_id FROM contents WHERE contents MATCH '${searchValue}' AND type = '${typeFilter}'`
+            }
+            else if (searchValue !== "") {
+                query = `SELECT full_id FROM contents WHERE contents MATCH '${searchValue}'`
+            }
+            else {
+                query = `SELECT full_id FROM contents WHERE type = '${typeFilter}'`
+            }
+
+            window.last_error = null;
+            try {
+                const displayIds = window.sqlite3.query(query).map((row) => row[0]);
+                applyRefreshData(displayIds);
+            }
+            catch (error) {
+                window.last_error = error;
+                console.error("Error during search:", error);
+                applyRefreshData(Array.from(window.all_ids))
+            }
+            finally {
+                $(".searching").hide()
+            }
+        }
+
+        $("#type-filter").on("change", (e) => {
+            doSearch();
+        })
+
+        function debounce(func, wait, immediate) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                var later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        };
+
+        var debouncedSearch = debounce(doSearch, 400, false);
+
+        $("#search-field").on("keydown", (e) => {
+          if (e.key === "Enter") {
+            doSearch();
+          }
+          else {
+            debouncedSearch();
+          }
+          // reset all icons
+           document.querySelectorAll('.copy-icon').forEach(i => i.textContent = 'content_copy')
+        });
+        
+        $(".copy-icon").on("click", (e) => {
+          navigator.clipboard.writeText(e.target.classList[2]).then(
+            () => {
+              // reset all icons
+              document.querySelectorAll('.copy-icon').forEach(i => i.textContent = 'content_copy')
+              e.target.textContent = 'check'
+              setTimeout(function(){
+                e.target.textContent = 'content_copy'
+              }, 3000);
+            }
+          )
+        });
+
+        document.getElementById('id-col-header').addEventListener('click', (e) => {
+            if (e.target.closest('.col-resizer')) return;
+            sortOrder = sortOrder === 'none' ? 'asc' : sortOrder === 'asc' ? 'desc' : 'none';
+            const sortIcons = { none: 'unfold_more', asc: 'arrow_upward', desc: 'arrow_downward' };
+            const indicator = document.getElementById('id-sort-indicator');
+            indicator.textContent = sortIcons[sortOrder];
+            refreshData(sortedIds(lastIds));
+        });
+
+    </script>
+    <script type="module">
+        const table = document.getElementById('resource-table');
+        const cols = Array.from(table.querySelectorAll('colgroup col'));
+        const ths = Array.from(table.querySelectorAll('thead th'));
+
+        // Proportionally rescale all columns when the wrapper changes size.
+        // Col widths start as CSS percentages; the observer only acts once pixel
+        // widths have been snapshotted on first drag (colTotal is NaN until then).
+        const wrapper = document.getElementById('table-wrapper');
+        const wrapperObserver = new ResizeObserver(() => {
+          const newWidth = table.clientWidth;
+          const colTotal = cols.reduce((s, c) => s + parseInt(c.style.width, 10), 0);
+          // Guard < 2px to avoid an infinite loop: writing col widths can itself
+          // trigger the observer.
+          if (!colTotal || Math.abs(newWidth - colTotal) < 2) return;
+          const scale = newWidth / colTotal;
+          cols.forEach(c => { c.style.width = Math.round(parseInt(c.style.width, 10) * scale) + 'px'; });
+        });
+        wrapperObserver.observe(wrapper);
+
+        // A synchronous inline script sets the initial height before first paint;
+        // this observer keeps it correct when rows are filtered in/out.
+        const resizers = Array.from(table.querySelectorAll('.col-resizer'));
+        function updateResizerHeights() {
+          const h = table.offsetHeight + 'px';
+          resizers.forEach(r => { r.style.height = h; });
+        }
+        updateResizerHeights();
+        const tableObserver = new ResizeObserver(updateResizerHeights);
+        tableObserver.observe(table);
+
+        let pixelWidthsInitialized = false;
+
+        const dragLine = document.createElement('div');
+        dragLine.id = 'col-drag-line';
+        document.body.appendChild(dragLine);
+
+        const MIN_WIDTH = 85;
+
+        ths.forEach((th, i) => {
+          const resizer = th.querySelector('.col-resizer');
+          if (!resizer) return;
+
+          resizer.addEventListener('mousedown', (e) => {
+            // Convert CSS percentage col widths to pixels on first drag so the
+            // wrapperObserver and drag deltas work in consistent pixel units.
+            if (!pixelWidthsInitialized) {
+              ths.forEach((t, idx) => { cols[idx].style.width = t.offsetWidth + 'px'; });
+              pixelWidthsInitialized = true;
+            }
+
+            const startWidths = cols.map(c => parseInt(c.style.width, 10));
+            const startX = e.clientX;
+
+            // Cascade bounds: sum shrinkable space across all cols in each direction.
+            let rightRoom = 0;
+            for (let j = i + 1; j < cols.length; j++) {
+              rightRoom += Math.max(0, startWidths[j] - MIN_WIDTH);
+            }
+            let leftRoom = 0;
+            for (let j = i; j >= 0; j--) {
+              leftRoom += Math.max(0, startWidths[j] - MIN_WIDTH);
+            }
+            const minX = startX - leftRoom;
+            const maxX = startX + rightRoom;
+
+            resizer.classList.add('resizing');
+            document.body.style.cursor = 'col-resize';
+            document.body.style.userSelect = 'none';
+            table.style.pointerEvents = 'none';
+            const wrapperRect = wrapper.getBoundingClientRect();
+            dragLine.style.top = wrapperRect.top + 'px';
+            dragLine.style.height = wrapperRect.height + 'px';
+            dragLine.style.transform = 'translateX(' + e.clientX + 'px)';
+            dragLine.style.display = 'block';
+
+            const onMouseMove = (ev) => {
+              dragLine.style.transform = 'translateX(' + Math.min(maxX, Math.max(minX, ev.clientX)) + 'px)';
+            };
+
+            const onMouseUp = (ev) => {
+              dragLine.style.display = 'none';
+              resizer.classList.remove('resizing');
+              document.body.style.cursor = '';
+              document.body.style.userSelect = '';
+              table.style.pointerEvents = '';
+              document.removeEventListener('mousemove', onMouseMove);
+              document.removeEventListener('mouseup', onMouseUp);
+
+              const delta = Math.min(maxX, Math.max(minX, ev.clientX)) - startX;
+              const newWidths = [...startWidths];
+
+              if (delta > 0) {
+                // Dragging right: col[i] grows, right cols shrink one by one.
+                let toTake = delta;
+                for (let j = i + 1; j < cols.length && toTake > 0; j++) {
+                  const taken = Math.min(toTake, startWidths[j] - MIN_WIDTH);
+                  newWidths[j] = startWidths[j] - taken;
+                  toTake -= taken;
+                }
+                newWidths[i] = startWidths[i] + (delta - toTake);
+              } else if (delta < 0) {
+                // Dragging left: left cols shrink one by one, col[i+1] grows.
+                let toTake = -delta;
+                for (let j = i; j >= 0 && toTake > 0; j--) {
+                  const taken = Math.min(toTake, startWidths[j] - MIN_WIDTH);
+                  newWidths[j] = startWidths[j] - taken;
+                  toTake -= taken;
+                }
+                if (i + 1 < cols.length) {
+                  newWidths[i + 1] = startWidths[i + 1] + (-delta - toTake);
+                }
+              }
+
+              cols.forEach((c, j) => { c.style.width = newWidths[j] + 'px'; });
+            };
+
+            // Listeners on document, not the handle, so dragging outside the
+            // element doesn't break the interaction.
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+            // Prevent text selection while dragging.
+            e.preventDefault();
+          });
+        });
+    </script>
+ <body>
+     
+     <nav id="page-header">
+       <a id="nav-about" href="about.html">About</a>
+     </nav>
+     
+     <div id="section-resources">
+        <p class="loading">Loading search</p>
+        <div id="search-container" style="display: none;">
+          <span id="type-label">Resource type</span>
+          <div id="type-cell">
+            <select id="type-filter">
+                <option value="all">All</option>
+            </select>
+          </div>
+          <input type="text" id="search-field" placeholder="Search">
+        </div>
+        <div class="search-info">
+          <div>
+            use AND to perform 'and',
+            use OR to perform 'or',
+            use spaces to separate strings,
+            surround strings in "" to use spaces inside the string
+          </div>
+          The search uses
+          <a
+            href="https://sqlite.org/fts5.html#full_text_query_syntax"
+            target="_blank">
+            SQLite's FTS syntax.</a>
+        </div>
+        <p id="status-error"></p>
+        <div id="status"></div>
+        <div id="table-wrapper">
+        <table id="resource-table" class="contents">
+          <colgroup>
+            <col style="width: 10%"><col style="width: 50%"><col style="width: 5%"><col style="width: 10%"><col style="width: 25%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="nowrap type-cell">Type<div class="col-resizer"></div></th>
+              <th class="nowrap id-cell" id="id-col-header">ID<span id="id-sort-indicator" class="material-symbols-outlined">unfold_more</span><div class="col-resizer"></div></th>
+              <th class="nowrap version-cell">Version<div class="col-resizer"></div></th>
+              <th
+                class="nowrap size-cell"
+                title="Total size"
+              >Total size<div class="col-resizer"></div></th>
+              <th class="nowrap">Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="mini_CNV">
+              <td
+                class="nowrap type-cell"
+                title="cnv_collection"
+              >cnv_collection</td>
+              <td class="id-cell" title="mini_CNV">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_CNV/index.html'>mini_CNV</a>
+                  <span class="material-symbols-outlined copy-icon mini_CNV">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">24.57 KB</td>
+              <td
+                class="nowrap"
+                title="CNV collection resource
+"
+              >CNV collection resource
+</td>
+              </tr>
+            <tr id="mini_allelescore_tabix_0">
+              <td
+                class="nowrap type-cell"
+                title="allele_score"
+              >allele_score</td>
+              <td class="id-cell" title="mini_allelescore_tabix_0">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_allelescore_tabix_0/index.html'>mini_allelescore_tabix_0</a>
+                  <span class="material-symbols-outlined copy-icon mini_allelescore_tabix_0">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">41.53 KB</td>
+              <td
+                class="nowrap"
+                title="
+0-based tabix-indexed TSV allele score resource
+"
+              >
+0-based tabix-indexed TSV allele score resource
+</td>
+              </tr>
+            <tr id="mini_allelescore_tabix_1">
+              <td
+                class="nowrap type-cell"
+                title="allele_score"
+              >allele_score</td>
+              <td class="id-cell" title="mini_allelescore_tabix_1">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_allelescore_tabix_1/index.html'>mini_allelescore_tabix_1</a>
+                  <span class="material-symbols-outlined copy-icon mini_allelescore_tabix_1">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">41.3 KB</td>
+              <td
+                class="nowrap"
+                title="
+1-based tabix-indexed TSV allele score resource
+"
+              >
+1-based tabix-indexed TSV allele score resource
+</td>
+              </tr>
+            <tr id="mini_genemodel_gtf">
+              <td
+                class="nowrap type-cell"
+                title="gene_models"
+              >gene_models</td>
+              <td class="id-cell" title="mini_genemodel_gtf">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_genemodel_gtf/index.html'>mini_genemodel_gtf</a>
+                  <span class="material-symbols-outlined copy-icon mini_genemodel_gtf">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">2.07 KB</td>
+              <td
+                class="nowrap"
+                title="Toy GTF gene models resource
+"
+              >Toy GTF gene models resource
+</td>
+              </tr>
+            <tr id="mini_genemodel_refseq">
+              <td
+                class="nowrap type-cell"
+                title="gene_models"
+              >gene_models</td>
+              <td class="id-cell" title="mini_genemodel_refseq">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_genemodel_refseq/index.html'>mini_genemodel_refseq</a>
+                  <span class="material-symbols-outlined copy-icon mini_genemodel_refseq">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">983.0 B</td>
+              <td
+                class="nowrap"
+                title="Toy RefSeq gene models resource
+"
+              >Toy RefSeq gene models resource
+</td>
+              </tr>
+            <tr id="mini_genescore">
+              <td
+                class="nowrap type-cell"
+                title="gene_score"
+              >gene_score</td>
+              <td class="id-cell" title="mini_genescore">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_genescore/index.html'>mini_genescore</a>
+                  <span class="material-symbols-outlined copy-icon mini_genescore">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">19.82 KB</td>
+              <td
+                class="nowrap"
+                title="Toy gene score resource
+"
+              >Toy gene score resource
+</td>
+              </tr>
+            <tr id="mini_geneset_gmt">
+              <td
+                class="nowrap type-cell"
+                title="gene_set_collection"
+              >gene_set_collection</td>
+              <td class="id-cell" title="mini_geneset_gmt">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_geneset_gmt/index.html'>mini_geneset_gmt</a>
+                  <span class="material-symbols-outlined copy-icon mini_geneset_gmt">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">32.32 KB</td>
+              <td
+                class="nowrap"
+                title="Toy GMT-format gene set collection resource
+"
+              >Toy GMT-format gene set collection resource
+</td>
+              </tr>
+            <tr id="mini_geneset_map">
+              <td
+                class="nowrap type-cell"
+                title="gene_set_collection"
+              >gene_set_collection</td>
+              <td class="id-cell" title="mini_geneset_map">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_geneset_map/index.html'>mini_geneset_map</a>
+                  <span class="material-symbols-outlined copy-icon mini_geneset_map">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">29.63 KB</td>
+              <td
+                class="nowrap"
+                title="Toy map-format gene set collection resource
+"
+              >Toy map-format gene set collection resource
+</td>
+              </tr>
+            <tr id="mini_genome">
+              <td
+                class="nowrap type-cell"
+                title="genome"
+              >genome</td>
+              <td class="id-cell" title="mini_genome">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_genome/index.html'>mini_genome</a>
+                  <span class="material-symbols-outlined copy-icon mini_genome">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">1.74 KB</td>
+              <td
+                class="nowrap"
+                title="Toy genome with two chromosomes
+"
+              >Toy genome with two chromosomes
+</td>
+              </tr>
+            <tr id="mini_pipeline">
+              <td
+                class="nowrap type-cell"
+                title="annotation_pipeline"
+              >annotation_pipeline</td>
+              <td class="id-cell" title="mini_pipeline">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_pipeline/index.html'>mini_pipeline</a>
+                  <span class="material-symbols-outlined copy-icon mini_pipeline">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">1.52 KB</td>
+              <td
+                class="nowrap"
+                title="pipeline for mini-GRR
+"
+              >pipeline for mini-GRR
+</td>
+              </tr>
+            <tr id="mini_positionscore_bedgraph_tabix_0">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_bedgraph_tabix_0">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_bedgraph_tabix_0/index.html'>mini_positionscore_bedgraph_tabix_0</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_bedgraph_tabix_0">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">74.92 KB</td>
+              <td
+                class="nowrap"
+                title="0-based bedgraph position score resource
+"
+              >0-based bedgraph position score resource
+</td>
+              </tr>
+            <tr id="mini_positionscore_bedgraph_tabix_interval_0">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_bedgraph_tabix_interval_0">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_bedgraph_tabix_interval_0/index.html'>mini_positionscore_bedgraph_tabix_interval_0</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_bedgraph_tabix_interval_0">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">87.6 KB</td>
+              <td
+                class="nowrap"
+                title="0-based bedgraph position score (interval)
+"
+              >0-based bedgraph position score (interval)
+</td>
+              </tr>
+            <tr id="mini_positionscore_bw">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_bw">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_bw/index.html'>mini_positionscore_bw</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_bw">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">64.15 KB</td>
+              <td
+                class="nowrap"
+                title="0-based bw position score
+"
+              >0-based bw position score
+</td>
+              </tr>
+            <tr id="mini_positionscore_tabix_0">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tabix_0">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tabix_0/index.html'>mini_positionscore_tabix_0</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tabix_0">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">89.6 KB</td>
+              <td
+                class="nowrap"
+                title="0-based tabix position score
+"
+              >0-based tabix position score
+</td>
+              </tr>
+            <tr id="mini_positionscore_tabix_1">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tabix_1">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tabix_1/index.html'>mini_positionscore_tabix_1</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tabix_1">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">77.35 KB</td>
+              <td
+                class="nowrap"
+                title="1-based tabix position score
+"
+              >1-based tabix position score
+</td>
+              </tr>
+            <tr id="mini_positionscore_tabix_interval_0">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tabix_interval_0">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tabix_interval_0/index.html'>mini_positionscore_tabix_interval_0</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tabix_interval_0">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">101.19 KB</td>
+              <td
+                class="nowrap"
+                title="0-based tabix position score (interval)
+"
+              >0-based tabix position score (interval)
+</td>
+              </tr>
+            <tr id="mini_positionscore_tabix_interval_1">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tabix_interval_1">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tabix_interval_1/index.html'>mini_positionscore_tabix_interval_1</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tabix_interval_1">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">125.78 KB</td>
+              <td
+                class="nowrap"
+                title="1-based tabix position score (interval)
+"
+              >1-based tabix position score (interval)
+</td>
+              </tr>
+            <tr id="mini_positionscore_tsv_0">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tsv_0">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tsv_0/index.html'>mini_positionscore_tsv_0</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tsv_0">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">82.17 KB</td>
+              <td
+                class="nowrap"
+                title="0-based tsv position score
+"
+              >0-based tsv position score
+</td>
+              </tr>
+            <tr id="mini_positionscore_tsv_1">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tsv_1">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tsv_1/index.html'>mini_positionscore_tsv_1</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tsv_1">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">74.06 KB</td>
+              <td
+                class="nowrap"
+                title="1-based tsv position score
+"
+              >1-based tsv position score
+</td>
+              </tr>
+            <tr id="mini_positionscore_tsv_1_twoscores">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tsv_1_twoscores">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tsv_1_twoscores/index.html'>mini_positionscore_tsv_1_twoscores</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tsv_1_twoscores">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">89.27 KB</td>
+              <td
+                class="nowrap"
+                title="1-based tsv position score
+"
+              >1-based tsv position score
+</td>
+              </tr>
+            <tr id="mini_positionscore_tsv_interval_0">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tsv_interval_0">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tsv_interval_0/index.html'>mini_positionscore_tsv_interval_0</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tsv_interval_0">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">99.62 KB</td>
+              <td
+                class="nowrap"
+                title="0-based tsv position score (interval)
+"
+              >0-based tsv position score (interval)
+</td>
+              </tr>
+            <tr id="mini_positionscore_tsv_interval_1">
+              <td
+                class="nowrap type-cell"
+                title="position_score"
+              >position_score</td>
+              <td class="id-cell" title="mini_positionscore_tsv_interval_1">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_positionscore_tsv_interval_1/index.html'>mini_positionscore_tsv_interval_1</a>
+                  <span class="material-symbols-outlined copy-icon mini_positionscore_tsv_interval_1">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">111.97 KB</td>
+              <td
+                class="nowrap"
+                title="1-based tsv position score (interval)
+"
+              >1-based tsv position score (interval)
+</td>
+              </tr>
+            <tr id="mini_vcf_all">
+              <td
+                class="nowrap type-cell"
+                title="allele_score"
+              >allele_score</td>
+              <td class="id-cell" title="mini_vcf_all">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_vcf_all/index.html'>mini_vcf_all</a>
+                  <span class="material-symbols-outlined copy-icon mini_vcf_all">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">43.27 KB</td>
+              <td
+                class="nowrap"
+                title="1-based vcf allele score
+"
+              >1-based vcf allele score
+</td>
+              </tr>
+            <tr id="mini_vcf_all_wmissing">
+              <td
+                class="nowrap type-cell"
+                title="allele_score"
+              >allele_score</td>
+              <td class="id-cell" title="mini_vcf_all_wmissing">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_vcf_all_wmissing/index.html'>mini_vcf_all_wmissing</a>
+                  <span class="material-symbols-outlined copy-icon mini_vcf_all_wmissing">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">39.27 KB</td>
+              <td
+                class="nowrap"
+                title="1-based vcf allele score
+"
+              >1-based vcf allele score
+</td>
+              </tr>
+            <tr id="mini_vcf_plot">
+              <td
+                class="nowrap type-cell"
+                title="allele_score"
+              >allele_score</td>
+              <td class="id-cell" title="mini_vcf_plot">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_vcf_plot/index.html'>mini_vcf_plot</a>
+                  <span class="material-symbols-outlined copy-icon mini_vcf_plot">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">41.83 KB</td>
+              <td
+                class="nowrap"
+                title="1-based vcf allele score
+"
+              >1-based vcf allele score
+</td>
+              </tr>
+            <tr id="mini_vcf_subset">
+              <td
+                class="nowrap type-cell"
+                title="allele_score"
+              >allele_score</td>
+              <td class="id-cell" title="mini_vcf_subset">
+                <div class="id-wrapper">
+                  <a class="nowrap" href='mini_vcf_subset/index.html'>mini_vcf_subset</a>
+                  <span class="material-symbols-outlined copy-icon mini_vcf_subset">content_copy</span>
+                </div>
+              </td>
+              <td class="nowrap version-cell">0</td>
+              <td class="nowrap size-cell">39.75 KB</td>
+              <td
+                class="nowrap"
+                title="1-based vcf allele score
+"
+              >1-based vcf allele score
+</td>
+              </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="searching" style="display: none;">Searching</p>
+     </div>
+     <div class="pagination"></div>
+     </div>
+     <script>
+       (function() {
+         var table = document.getElementById('resource-table');
+         if (!table) return;
+         var h = table.offsetHeight + 'px';
+         table.querySelectorAll('.col-resizer').forEach(function(r) { r.style.height = h; });
+       })();
+     </script>
+ </body>
+</html>

@@ -2,15 +2,17 @@ type: genome
 
 filename: mini.genome.fa
 
-chrom_prefix: "chr"
-
+chrom_prefix: chr
 
 meta:
   summary: |
-    mini genome
+    Toy genome with two chromosomes
 
   description: |
-    my description
-    ![Figure](./sequence_plot.png "SSSS")
+    Nucleotide sequence of a toy genome containing two chromosomes, chr1 and chr2. This minimal genome is intended for testing and demonstration purposes. The chromosome sequences are shown below:
 
-  labels: ~
+    >chromosome1 TATGAAATAA
+    
+    >chromosome2 AAAAAAAAAA
+
+    The accompanying dataprep.sh script runs samtools faidx on mini.genome.fa to create the FASTA index file used for random-access sequence queries.

@@ -1,15 +1,21 @@
-- md5: b5f5a0e41bcba1701e8f37c10a0ce84b
+- md5: 9eaeb4790001275179cb153342e3d191
+  name: dataprep.sh
+  size: 74
+- md5: 503f818ca5c508f78e56c0f989645c97
   name: genomic_resource.yaml
-  size: 382
+  size: 623
 - md5: 65492a9015b3a3c529fffebe562567fd
   name: mini_genescore.csv
   size: 108
-- md5: f3daca2060f371c5882fdc6ba8030712
+- md5: 035b97f8db4e684f239a78ee53d20f9a
+  name: mini_genescore.csv.gz
+  size: 126
+- md5: 4eeb208d9762fb52f19bd29ade91b23f
   name: statistics/histogram_my_genescore.png
-  size: 13570
-- md5: 47206281470254ea23b3ec469026376a
+  size: 18629
+- md5: 17ee70b5e114d155ceb5dea49c817a62
   name: statistics/histogram_my_genescore.yaml
-  size: 244
-- md5: 47f53e2bf051e77342fcf2fa20d9dbcb
+  size: 372
+- md5: 71b702ae2e97c72bafa734c3c6ebd865
   name: statistics/stats_hash
   size: 363

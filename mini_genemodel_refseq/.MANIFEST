@@ -1,6 +1,6 @@
-- md5: 4c268f71d25d26ee78156ade0b51e0bb
+- md5: 1c9853607c2b524db19dbeb699f58155
   name: genomic_resource.yaml
-  size: 210
+  size: 486
 - md5: 1b40b51ef56a01ced4d3ded878666956
   name: mini_refseq.txt
   size: 61

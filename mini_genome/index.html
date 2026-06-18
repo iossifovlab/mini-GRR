@@ -1,166 +1,305 @@
 
-
 <html>
-<head>
-<style>
-h3,h4 {
-    margin-top:0.5em;
-    margin-bottom:0.5em;
-}
-table {
-    border-collapse: collapse;
-}
-th, td {
-    padding: 10px;
-}
-th {
-    font-size: 20px;
-}
-td {
-    font-size: 18px;
-}
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap">
+    <style>
+      body {
+        margin: 0;
+      }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    justify-content: center;
-}
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-.close {
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-}
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
+      .page-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 40px 100px;
+      }
 
-#chromosomes-table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
-#chromosomes-table th {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-}
-#chromosomes-table td {
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-}
-#chromosomes-table th:first-child,
-#chromosomes-table td:first-child {
-    border-left: 1px solid;
-}
-#chromosomes-table thead tr:nth-of-type(2) th {
-    border-top: none;
-}
-#chromosomes-table thead {
-    position: sticky; top: 0; background-color: white;
-}
+            *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+      }
 
-</style>
+      body {
+        color: #252e34;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: #5b778c;
+      }
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
-            trigger.addEventListener("click", function () {
-                var modalId = this.getAttribute("data-modal-trigger");
-                var modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = "block";
-                    document.currentOpenModal = modal;
+      h2 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3,h4 {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%
+      }
+
+      th {
+        background: #ecf1f6;
+      }
+
+      td,
+      th {
+        border: 1px solid #cfd8df;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+      }
+
+      tr {
+        height: 38px;
+      }
+
+      ul {
+        list-style-type: '-  ';
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #24699E;
+      }
+
+      a:hover {
+        color: #4C93C9;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #page-header {
+        display: flex;
+        align-items: center;
+        padding: 14px clamp(20px, 10%, 64px);
+        border-bottom: 1px solid #e4edf2;
+      }
+
+      #page-header a {
+        color: #24699E;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease-out;
+        font-size: 18px;
+      }
+
+      #page-header a:hover {
+        color: #4C93C9;
+      }
+
+      .histogram {
+        margin-bottom: 16px;
+      }
+
+      .histogram-thumbnail {
+        max-width: 200px;
+        cursor: pointer;
+      }
+
+      .text-muted {
+        color: #919191;
+      }
+
+      .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+
+      .scrollable-table-container thead {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+
+      .scrollable-table-container table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .scrollable-table-container th {
+        border: 0;
+        border-top: 1px solid #cfd8df;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container td {
+        border: 0;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container th:first-child,
+      .scrollable-table-container td:first-child {
+        border-left: 1px solid #cfd8df;
+      }
+      #chromosomes-table thead tr:nth-of-type(2) th {
+        border-top: none;
+      }
+
+      #resource-table {
+        margin-bottom: 70px;
+      }
+
+      #resource-table th {
+        text-align: end;
+        width: 100px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        justify-content: center;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .close {
+        float: right;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      #chromosomes-table {
+    margin-bottom: 50px;
+}
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
+                trigger.addEventListener("click", function () {
+                    var modalId = this.getAttribute("data-modal-trigger");
+                    var modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = "flex";
+                        document.currentOpenModal = modal;
+                    }
+                });
+            });
+
+            document.querySelectorAll(".close").forEach(function (closeButton) {
+                closeButton.addEventListener("click", function () {
+                    this.closest(".modal").style.display = "none";
+                    document.currentOpenModal = null;
+                });
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target.classList.contains("modal")) {
+                    event.target.style.display = "none";
+                    document.currentOpenModal = null;
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && document.currentOpenModal) {
+                    document.currentOpenModal.style.display = "none";
+                    document.currentOpenModal = null;
                 }
             });
         });
-
-        document.querySelectorAll(".close").forEach(function (closeButton) {
-            closeButton.addEventListener("click", function () {
-                this.closest(".modal").style.display = "none";
-                document.currentOpenModal = null;
-            });
-        });
-
-        window.addEventListener("click", function (event) {
-            if (event.target.classList.contains("modal")) {
-                event.target.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && document.currentOpenModal) {
-                document.currentOpenModal.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-    });
-</script>
-</head>
-    <body>
-    <h1>Resource</h1>
+    </script>
+  </head>
+  <body>
+    <nav id="page-header">
+      <a href="../index.html">← Back to main page</a>
+    </nav>
+    <div class="page-content">
+    <h2>Resource</h2>
     <div>
-        <table border="1">
+        <table id="resource-table">
             <tr>
-                <td>
-                    <b>Id:</b>
-                </td>
+                <th>Id</th>
                 <td>mini_genome</td>
             </tr>
             <tr>
-                <td>
-                    <b>Type:</b>
-                </td>
+                <th>Type</th>
                 <td>genome</td>
             </tr>
             <tr>
-                <td>
-                    <b>Version:</b>
-                </td>
+                <th>Version</th>
                 <td>0</td>
             </tr>
             <tr>
-                <td><b>Summary:</b></td>
+                <th>Summary</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>mini genome</p>
+                        <template shadowrootmode="open">Toy genome with two chromosomes
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Description:</b>
-                </td>
+                <th>Description</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>my description
-<img src="./sequence_plot.png" alt="Figure" title="SSSS" /></p>
+                        <template shadowrootmode="open">
+                             <style>
+                              img {
+                                max-width: min(100%, 800px);
+                                max-height: 50vh;
+                                width: auto;
+                                height: auto;
+                                display: block;
+                              }
+
+                              a {
+                                text-decoration: none;
+                                color: #24699E;
+                              }
+
+                              a:hover {
+                                color: #4C93C9;
+                              }
+                            </style><p>Nucleotide sequence of a toy genome containing two chromosomes, chr1 and chr2. This minimal genome is intended for testing and demonstration purposes. The chromosome sequences are shown below:</p>
+
+<blockquote>
+  <p>chromosome1 TATGAAATAA</p>
+</blockquote>
+
+<blockquote>
+  <p>chromosome2 AAAAAAAAAA</p>
+</blockquote>
+
+<p>The accompanying dataprep.sh script runs samtools faidx on mini.genome.fa to create the FASTA index file used for random-access sequence queries.</p>
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Labels:</b>
-                </td>
+                <th>Labels</th>
                 <td>
                 
                 </td>
@@ -171,14 +310,9 @@ td {
     
 
 
-<p>chrom prefix: chr</p>
 
-
-
-
-<h3>Genome statistics:</h3>
 <h3>Chromosomes (2):</h3>
-<div style="max-height: 50%; overflow-y: auto; width: fit-content; margin-bottom: 14px;">
+<div class="scrollable-table-container">
     <table id="chromosomes-table">
         <thead>
             <tr>
@@ -262,8 +396,8 @@ td {
             </tr></table>
 </div>
 
-    <h4>Bi-Nucleotide distribution:</h4>
-    <table border="1">
+    <h3>Bi-Nucleotide distribution:</h3>
+    <table style="width: fit-content;">
         <tr>
             <th></th>
             
@@ -358,7 +492,7 @@ td {
 
 
 
-    <h1>Files</h1>
+    <h2 style="margin-top: 70px;">Files</h2>
     <table>
     <thead>
         <tr>
@@ -383,8 +517,8 @@ td {
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">189.0 B</td>
-                <td class="nowrap">a2619dd69a6ebc6247bb30add740a8c3</td>
+                <td class="nowrap">541.0 B</td>
+                <td class="nowrap">efb16754ce8d38183f70910f0cdb587f</td>
             </tr>
             <tr>
                 
@@ -392,8 +526,8 @@ td {
                         <a href='mini.genome.fa'>mini.genome.fa</a>
                     </td>
                 
-                <td class="nowrap">63.0 B</td>
-                <td class="nowrap">c6affce7a23b3e79d2bf863f4e4a6c83</td>
+                <td class="nowrap">58.0 B</td>
+                <td class="nowrap">b4c3439c80f91fbc3d4273762b742b16</td>
             </tr>
             <tr>
                 
@@ -402,16 +536,7 @@ td {
                     </td>
                 
                 <td class="nowrap">34.0 B</td>
-                <td class="nowrap">40720e2bef4d54576055883e933b7254</td>
-            </tr>
-            <tr>
-                
-                    <td class="nowrap">
-                        <a href='sequence_plot.png'>sequence_plot.png</a>
-                    </td>
-                
-                <td class="nowrap">45.94 KB</td>
-                <td class="nowrap">dbe0b44c45cbb15175a00a12bf6e6ae5</td>
+                <td class="nowrap">4fe794cc16a4d195b0c9991822df116b</td>
             </tr>
             <tr>
                 
@@ -424,5 +549,6 @@ td {
             </tr>
     </tbody>
     </table>
-    </body>
+    </div>
+  </body>
 </html>

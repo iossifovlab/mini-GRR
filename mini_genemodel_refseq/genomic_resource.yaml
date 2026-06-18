@@ -6,14 +6,13 @@ filename: mini_refseq.txt
 
 format: "refseq"
 
-
 meta: 
   summary: |
-    refseq gene model
+    Toy RefSeq gene models resource
 
   description: |
 
-    my description
+    This toy gene model resource demonstrates how transcript structures can be represented in RefSeq/UCSC tabular format. It represents the same minimal gene model as the toy GTF resource, including one gene, one transcript, and one exon on the mini_genome, using 0-based half-open coordinates.
 
 #  labels:
-#    reference_genome: hg38/genomes/GRCh38-hg38
+#    reference_genome: mini_genome

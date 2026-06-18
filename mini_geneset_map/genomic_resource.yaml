@@ -1,0 +1,12 @@
+type: gene_set_collection
+format: map
+filename: mini_geneset-map.txt
+
+id: geneset1
+
+meta:
+  summary: |
+    Toy map-format gene set collection resource
+
+  description: |
+    This toy gene set collection resource demonstrates how gene-set membership can be represented using separate map and map-name files. The map file assigns each gene to one or more gene set identifiers, while the map-name file provides the display names for those identifiers. This resource represents the same toy gene-set membership as the GMT-format example: geneA is assigned to two toy gene sets, Function1 and Function2.

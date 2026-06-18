@@ -1,165 +1,293 @@
 
-
 <html>
-<head>
-<style>
-h3,h4 {
-    margin-top:0.5em;
-    margin-bottom:0.5em;
-}
-table {
-    border-collapse: collapse;
-}
-th, td {
-    padding: 10px;
-}
-th {
-    font-size: 20px;
-}
-td {
-    font-size: 18px;
-}
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap">
+    <style>
+      body {
+        margin: 0;
+      }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    justify-content: center;
-}
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-.close {
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-}
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
+      .page-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 40px 100px;
+      }
 
-#chromosomes-table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
-#chromosomes-table th {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-}
-#chromosomes-table td {
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-}
-#chromosomes-table th:first-child,
-#chromosomes-table td:first-child {
-    border-left: 1px solid;
-}
-#chromosomes-table thead tr:nth-of-type(2) th {
-    border-top: none;
-}
-#chromosomes-table thead {
-    position: sticky; top: 0; background-color: white;
-}
+            *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+      }
 
-</style>
+      body {
+        color: #252e34;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: #5b778c;
+      }
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
-            trigger.addEventListener("click", function () {
-                var modalId = this.getAttribute("data-modal-trigger");
-                var modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = "block";
-                    document.currentOpenModal = modal;
+      h2 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3,h4 {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%
+      }
+
+      th {
+        background: #ecf1f6;
+      }
+
+      td,
+      th {
+        border: 1px solid #cfd8df;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+      }
+
+      tr {
+        height: 38px;
+      }
+
+      ul {
+        list-style-type: '-  ';
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #24699E;
+      }
+
+      a:hover {
+        color: #4C93C9;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #page-header {
+        display: flex;
+        align-items: center;
+        padding: 14px clamp(20px, 10%, 64px);
+        border-bottom: 1px solid #e4edf2;
+      }
+
+      #page-header a {
+        color: #24699E;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease-out;
+        font-size: 18px;
+      }
+
+      #page-header a:hover {
+        color: #4C93C9;
+      }
+
+      .histogram {
+        margin-bottom: 16px;
+      }
+
+      .histogram-thumbnail {
+        max-width: 200px;
+        cursor: pointer;
+      }
+
+      .text-muted {
+        color: #919191;
+      }
+
+      .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+
+      .scrollable-table-container thead {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+
+      .scrollable-table-container table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .scrollable-table-container th {
+        border: 0;
+        border-top: 1px solid #cfd8df;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container td {
+        border: 0;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container th:first-child,
+      .scrollable-table-container td:first-child {
+        border-left: 1px solid #cfd8df;
+      }
+      #chromosomes-table thead tr:nth-of-type(2) th {
+        border-top: none;
+      }
+
+      #resource-table {
+        margin-bottom: 70px;
+      }
+
+      #resource-table th {
+        text-align: end;
+        width: 100px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        justify-content: center;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .close {
+        float: right;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
+                trigger.addEventListener("click", function () {
+                    var modalId = this.getAttribute("data-modal-trigger");
+                    var modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = "flex";
+                        document.currentOpenModal = modal;
+                    }
+                });
+            });
+
+            document.querySelectorAll(".close").forEach(function (closeButton) {
+                closeButton.addEventListener("click", function () {
+                    this.closest(".modal").style.display = "none";
+                    document.currentOpenModal = null;
+                });
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target.classList.contains("modal")) {
+                    event.target.style.display = "none";
+                    document.currentOpenModal = null;
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && document.currentOpenModal) {
+                    document.currentOpenModal.style.display = "none";
+                    document.currentOpenModal = null;
                 }
             });
         });
-
-        document.querySelectorAll(".close").forEach(function (closeButton) {
-            closeButton.addEventListener("click", function () {
-                this.closest(".modal").style.display = "none";
-                document.currentOpenModal = null;
-            });
-        });
-
-        window.addEventListener("click", function (event) {
-            if (event.target.classList.contains("modal")) {
-                event.target.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && document.currentOpenModal) {
-                document.currentOpenModal.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-    });
-</script>
-</head>
-    <body>
-    <h1>Resource</h1>
+    </script>
+  </head>
+  <body>
+    <nav id="page-header">
+      <a href="../index.html">← Back to main page</a>
+    </nav>
+    <div class="page-content">
+    <h2>Resource</h2>
     <div>
-        <table border="1">
+        <table id="resource-table">
             <tr>
-                <td>
-                    <b>Id:</b>
-                </td>
+                <th>Id</th>
                 <td>mini_genemodel_gtf</td>
             </tr>
             <tr>
-                <td>
-                    <b>Type:</b>
-                </td>
+                <th>Type</th>
                 <td>gene_models</td>
             </tr>
             <tr>
-                <td>
-                    <b>Version:</b>
-                </td>
+                <th>Version</th>
                 <td>0</td>
             </tr>
             <tr>
-                <td><b>Summary:</b></td>
+                <th>Summary</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>gtf gene model</p>
+                        <template shadowrootmode="open">Toy GTF gene models resource
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Description:</b>
-                </td>
+                <th>Description</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>my description</p>
+                        <template shadowrootmode="open">
+                             <style>
+                              img {
+                                max-width: min(100%, 800px);
+                                max-height: 50vh;
+                                width: auto;
+                                height: auto;
+                                display: block;
+                              }
+
+                              a {
+                                text-decoration: none;
+                                color: #24699E;
+                              }
+
+                              a:hover {
+                                color: #4C93C9;
+                              }
+                            </style><p>This toy gene model resource demonstrates how transcript structures can be represented in GTF format. It represents the same minimal gene model as the toy RefSeq gene models resource, including one gene, one transcript, one exon, UTR, CDS, start codon, and stop codon features using 1-based GTF coordinates.</p>
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Labels:</b>
-                </td>
+                <th>Labels</th>
                 <td>
                 
                 </td>
@@ -168,16 +296,15 @@ td {
     </div>
 
     
-<h1>Configuration</h1>
-    Gene models file:
-    <p><a href="mini_gtf.gtf">
+<h2>Configuration</h2>
+    <p><b>Gene models file:</b> <a href="mini_gtf.gtf">
     mini_gtf.gtf
     </a></p>
 
-    <p>Format: gtf</p>
-<h1>Statistics</h1>
-    <h2>Chromosome statistics</h2>
-    <div style="max-height: 50%; overflow-y: auto; width: fit-content">
+    <p><b>Format:</b> gtf</p>
+<h2>Statistics</h2>
+    <h3>Chromosome statistics</h3>
+    <div class="scrollable-table-container">
         <table id="chromosomes-table">
             <thead>
                 <tr>
@@ -208,7 +335,7 @@ td {
     </div>
 
 
-    <h1>Files</h1>
+    <h2 style="margin-top: 70px;">Files</h2>
     <table>
     <thead>
         <tr>
@@ -233,8 +360,8 @@ td {
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">201.0 B</td>
-                <td class="nowrap">4eaaf0e86f52df49e297016cd0379faa</td>
+                <td class="nowrap">491.0 B</td>
+                <td class="nowrap">813df73d918723828498c76568ad261a</td>
             </tr>
             <tr>
                 
@@ -242,26 +369,8 @@ td {
                         <a href='mini_gtf.gtf'>mini_gtf.gtf</a>
                     </td>
                 
-                <td class="nowrap">1.25 KB</td>
-                <td class="nowrap">a843bf516e89f9d4192da1e8f70b0647</td>
-            </tr>
-            <tr>
-                
-                    <td class="nowrap">
-                        <a href='mini_refseq.txt'>mini_refseq.txt</a>
-                    </td>
-                
-                <td class="nowrap">61.0 B</td>
-                <td class="nowrap">1b40b51ef56a01ced4d3ded878666956</td>
-            </tr>
-            <tr>
-                
-                    <td class="nowrap">
-                        <a href='to_gtf.py'>to_gtf.py</a>
-                    </td>
-                
-                <td class="nowrap">368.0 B</td>
-                <td class="nowrap">526e2c838afc4ddbea2a4d4e95e07853</td>
+                <td class="nowrap">1.15 KB</td>
+                <td class="nowrap">ab26e714365518d2317f017b98db890e</td>
             </tr>
             <tr>
                 
@@ -274,5 +383,6 @@ td {
             </tr>
     </tbody>
     </table>
-    </body>
+    </div>
+  </body>
 </html>

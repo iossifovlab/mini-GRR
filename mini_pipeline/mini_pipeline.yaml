@@ -46,4 +46,3 @@ annotators:
 # - gene_score_annotator:
 #     resource_id: mini_genescore
 #     input_gene_list: gene_list 
-

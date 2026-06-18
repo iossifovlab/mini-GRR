@@ -1,8 +1,8 @@
 type: gene_set_collection
+id: gmt_geneset
 format: gmt
 filename: mini_geneset-gmt.gmt
 
-id: gmt_geneset
 
 meta:
   summary: |

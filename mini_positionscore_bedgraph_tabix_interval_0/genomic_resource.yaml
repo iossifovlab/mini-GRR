@@ -20,7 +20,7 @@ table:
 scores:
   - id: posreg_bedgraph_0
     type: float
-    desc: "a description"
+    desc: "Toy numeric position score from a bedgraph file with regions"
     large_values_desc: "more"
     small_values_desc: "less"
     index: 3
@@ -38,6 +38,6 @@ meta:
     0-based bedgraph position score (interval)
 
   description: |
-    
-    my description
-    ![The score graphs](./scores_graph.png "SSSS")
+    This toy position score resource demonstrates how genomic scores can be stored in a bedGraph file where each row assigns one numeric score to a genomic region on the mini genome. The file uses 0-based half-open coordinates, where the start position is included and the end position is excluded. The fourth column contains the numeric score assigned to each region.
+
+    The accompanying dataprep.sh script compresses mini\_positionscore\_interval\_bedgraph\_0.bedgraph with bgzip and creates a tabix index using tabix -p bed.

@@ -41,21 +41,21 @@
         }
       },
       "files_md5": {
-        "mini_allelescore_tabix_0.tsv.gz": "6a805fe106c1984d8fd15ae4636cc145",
-        "mini_allelescore_tabix_0.tsv.gz.tbi": "a39e43345100f443e2d27dec0da3d625"
+        "mini_allelescore_tabix_0.tsv.gz": "7a74d7f59dacfb1a3e11d62e580c632e",
+        "mini_allelescore_tabix_0.tsv.gz.tbi": "c7c11a893526bdd0a1ba70ac896ef25a"
       }
     }
   },
   "score_config": [
     {
-      "id": "np_tsv_0_num",
+      "id": "allele_tsv_0_num",
       "type": "float",
-      "name": "an_np_score",
+      "name": "an_allele_score",
       "index": null,
       "na_values": "['', '.', 'NA', 'nan']"
     },
     {
-      "id": "np_tsv_0_cat",
+      "id": "allele_tsv_0_cat",
       "type": "str",
       "name": "a_class",
       "index": null,

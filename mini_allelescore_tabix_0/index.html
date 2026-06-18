@@ -1,141 +1,296 @@
 
-
 <html>
-<head>
-<style>
-h3,h4 {
-    margin-top:0.5em;
-    margin-bottom:0.5em;
-}
-table {
-    border-collapse: collapse;
-}
-th, td {
-    padding: 10px;
-}
-th {
-    font-size: 20px;
-}
-td {
-    font-size: 18px;
-}
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap">
+    <style>
+      body {
+        margin: 0;
+      }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    justify-content: center;
-}
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-.close {
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-}
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
+      .page-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 40px 100px;
+      }
 
-</style>
+            *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+      }
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
-            trigger.addEventListener("click", function () {
-                var modalId = this.getAttribute("data-modal-trigger");
-                var modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = "block";
-                    document.currentOpenModal = modal;
+      body {
+        color: #252e34;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: #5b778c;
+      }
+
+      h2 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3,h4 {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%
+      }
+
+      th {
+        background: #ecf1f6;
+      }
+
+      td,
+      th {
+        border: 1px solid #cfd8df;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+      }
+
+      tr {
+        height: 38px;
+      }
+
+      ul {
+        list-style-type: '-  ';
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #24699E;
+      }
+
+      a:hover {
+        color: #4C93C9;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #page-header {
+        display: flex;
+        align-items: center;
+        padding: 14px clamp(20px, 10%, 64px);
+        border-bottom: 1px solid #e4edf2;
+      }
+
+      #page-header a {
+        color: #24699E;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease-out;
+        font-size: 18px;
+      }
+
+      #page-header a:hover {
+        color: #4C93C9;
+      }
+
+      .histogram {
+        margin-bottom: 16px;
+      }
+
+      .histogram-thumbnail {
+        max-width: 200px;
+        cursor: pointer;
+      }
+
+      .text-muted {
+        color: #919191;
+      }
+
+      .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+
+      .scrollable-table-container thead {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+
+      .scrollable-table-container table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .scrollable-table-container th {
+        border: 0;
+        border-top: 1px solid #cfd8df;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container td {
+        border: 0;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container th:first-child,
+      .scrollable-table-container td:first-child {
+        border-left: 1px solid #cfd8df;
+      }
+      #chromosomes-table thead tr:nth-of-type(2) th {
+        border-top: none;
+      }
+
+      #resource-table {
+        margin-bottom: 70px;
+      }
+
+      #resource-table th {
+        text-align: end;
+        width: 100px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        justify-content: center;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .close {
+        float: right;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      table {
+    table-layout: fixed;
+}
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
+                trigger.addEventListener("click", function () {
+                    var modalId = this.getAttribute("data-modal-trigger");
+                    var modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = "flex";
+                        document.currentOpenModal = modal;
+                    }
+                });
+            });
+
+            document.querySelectorAll(".close").forEach(function (closeButton) {
+                closeButton.addEventListener("click", function () {
+                    this.closest(".modal").style.display = "none";
+                    document.currentOpenModal = null;
+                });
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target.classList.contains("modal")) {
+                    event.target.style.display = "none";
+                    document.currentOpenModal = null;
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && document.currentOpenModal) {
+                    document.currentOpenModal.style.display = "none";
+                    document.currentOpenModal = null;
                 }
             });
         });
-
-        document.querySelectorAll(".close").forEach(function (closeButton) {
-            closeButton.addEventListener("click", function () {
-                this.closest(".modal").style.display = "none";
-                document.currentOpenModal = null;
-            });
-        });
-
-        window.addEventListener("click", function (event) {
-            if (event.target.classList.contains("modal")) {
-                event.target.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && document.currentOpenModal) {
-                document.currentOpenModal.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-    });
-</script>
-</head>
-    <body>
-    <h1>Resource</h1>
+    </script>
+  </head>
+  <body>
+    <nav id="page-header">
+      <a href="../index.html">← Back to main page</a>
+    </nav>
+    <div class="page-content">
+    <h2>Resource</h2>
     <div>
-        <table border="1">
+        <table id="resource-table">
             <tr>
-                <td>
-                    <b>Id:</b>
-                </td>
+                <th>Id</th>
                 <td>mini_allelescore_tabix_0</td>
             </tr>
             <tr>
-                <td>
-                    <b>Type:</b>
-                </td>
+                <th>Type</th>
                 <td>allele_score</td>
             </tr>
             <tr>
-                <td>
-                    <b>Version:</b>
-                </td>
+                <th>Version</th>
                 <td>0</td>
             </tr>
             <tr>
-                <td><b>Summary:</b></td>
+                <th>Summary</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>0-based tsv allele score</p>
+                        <template shadowrootmode="open">
+0-based tabix-indexed TSV allele score resource
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Description:</b>
-                </td>
+                <th>Description</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p><img src="./scores_graph.png" alt="The score graphs" title="SSSS" /></p>
+                        <template shadowrootmode="open">
+                             <style>
+                              img {
+                                max-width: min(100%, 800px);
+                                max-height: 50vh;
+                                width: auto;
+                                height: auto;
+                                display: block;
+                              }
+
+                              a {
+                                text-decoration: none;
+                                color: #24699E;
+                              }
+
+                              a:hover {
+                                color: #4C93C9;
+                              }
+                            </style><p>This toy allele score resource demonstrates how allele-level scores can be stored in a tabix-indexed TSV file using 0-based coordinates. Each row represents a specific allele defined by chromosome, position, reference allele, and alternative allele, and provides both a numeric allele score and a categorical allele class.</p>
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Labels:</b>
-                </td>
+                <th>Labels</th>
                 <td>
                 
                 </td>
@@ -147,94 +302,108 @@ td {
 
 
 
-<h1>Scores</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Type</th>
-        <th>Default annotation</th>
-        <th>Description</th>
-        <th>Histogram</th>
-        <th>Range</th>
-    </tr><tr class="score-definition">
-            <td>np_tsv_0_num</td>
+<h2>Scores (2)</h2>
+<div class="scrollable-table-container">  
+<table>
+    <colgroup>
+        <col style="width: 15%">
+        <col style="width: 6%">
+        <col style="width: 15%">
+        <col>
+        <col style="width: 220px">
+        <col style="width: 15%">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Default annotation</th>
+            <th>Description</th>
+            <th>Histogram</th>
+            <th>Range</th>
+        </tr>
+    </thead><tr class="score-definition">
+            <td>allele_tsv_0_num</td>
             <td>float</td>
             
             
                 <td>
-                    <p>np_tsv_0_num</p>
+                    <p>allele_tsv_0_num</p>
                 </td>
             
 
             <td>
-                <div>a description
+                <div>Toy numeric allele score
 </div>
                 
-                    <div style="color: rgb(145,145,145)">
+                    <div class="text-muted">
                         Small values desc: less
                     </div>
                 
                 
-                    <div style="color: rgb(145,145,145)">
+                    <div class="text-muted">
                         Large values desc: more
                     </div>
                 
             </td>
-            <td>
+            <td style="text-align: center">
                 
                 
-                <img src="statistics/histogram_np_tsv_0_num.png"
-                    alt="HISTOGRAM FOR np_tsv_0_num"
-                    title=np_tsv_0_num
-                    style="width: 200px; cursor: pointer;"
-                    data-modal-trigger="modal-np_tsv_0_num"></td>
+                <img src="statistics/histogram_allele_tsv_0_num.png"
+                    alt="HISTOGRAM FOR allele_tsv_0_num"
+                    title=allele_tsv_0_num
+                    class="histogram-thumbnail"
+                    data-modal-trigger="modal-allele_tsv_0_num"></td>
             <td>
                 [1, 2.2]</td>
         </tr><tr class="score-definition">
-            <td>np_tsv_0_cat</td>
+            <td>allele_tsv_0_cat</td>
             <td>str</td>
             
             
                 <td>
-                    <p>np_tsv_0_cat</p>
+                    <p>allele_tsv_0_cat</p>
                 </td>
             
 
             <td>
-                <div>a description
+                <div>Toy categorical allele score
 </div>
                 
                 
             </td>
-            <td>
+            <td style="text-align: center">
                 
                 
-                <img src="statistics/histogram_np_tsv_0_cat.png"
-                    alt="HISTOGRAM FOR np_tsv_0_cat"
-                    title=np_tsv_0_cat
-                    style="width: 200px; cursor: pointer;"
-                    data-modal-trigger="modal-np_tsv_0_cat"></td>
+                <img src="statistics/histogram_allele_tsv_0_cat.png"
+                    alt="HISTOGRAM FOR allele_tsv_0_cat"
+                    title=allele_tsv_0_cat
+                    class="histogram-thumbnail"
+                    data-modal-trigger="modal-allele_tsv_0_cat"></td>
             <td>
                 bad, good</td>
-        </tr><div id="modal-np_tsv_0_num" class="modal">
-            <div class="modal-content" style="padding: 10px 20px; background-color: #fff; height: fit-content; width: fit-content;">
-                <span title=np_tsv_0_num class="close">&times;</span>
-                <img src="statistics/histogram_np_tsv_0_num.png"
-                    alt="HISTOGRAM FOR np_tsv_0_num"
-                    title=np_tsv_0_num>
+        </tr><div id="modal-allele_tsv_0_num" class="modal">
+            <div class="modal-content">
+                <span title=allele_tsv_0_num class="close">&times;</span>
+                <img src="statistics/histogram_allele_tsv_0_num.png"
+                    alt="HISTOGRAM FOR allele_tsv_0_num"
+                    title=allele_tsv_0_num
+                    style="max-width: min(100%, 800px);">
             </div>
-        </div><div id="modal-np_tsv_0_cat" class="modal">
-            <div class="modal-content" style="padding: 10px 20px; background-color: #fff; height: fit-content; width: fit-content;">
-                <span title=np_tsv_0_cat class="close">&times;</span>
-                <img src="statistics/histogram_np_tsv_0_cat.png"
-                    alt="HISTOGRAM FOR np_tsv_0_cat"
-                    title=np_tsv_0_cat>
+        </div><div id="modal-allele_tsv_0_cat" class="modal">
+            <div class="modal-content">
+                <span title=allele_tsv_0_cat class="close">&times;</span>
+                <img src="statistics/histogram_allele_tsv_0_cat.png"
+                    alt="HISTOGRAM FOR allele_tsv_0_cat"
+                    title=allele_tsv_0_cat
+                    style="max-width: min(100%, 800px);">
             </div>
         </div>
 </table>
+</div>
 
 
-    <h1>Files</h1>
+    <h2 style="margin-top: 70px;">Files</h2>
     <table>
     <thead>
         <tr>
@@ -259,8 +428,8 @@ td {
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">859.0 B</td>
-                <td class="nowrap">03ef0a1e1c1c06de7ac68a0c210419d5</td>
+                <td class="nowrap">1.09 KB</td>
+                <td class="nowrap">65b8f88f1b592c20e31ad36049aada7b</td>
             </tr>
             <tr>
                 
@@ -268,8 +437,8 @@ td {
                         <a href='mini_allelescore_tabix_0.tsv'>mini_allelescore_tabix_0.tsv</a>
                     </td>
                 
-                <td class="nowrap">367.0 B</td>
-                <td class="nowrap">3074ecda1d857a864e391486bfa8f569</td>
+                <td class="nowrap">371.0 B</td>
+                <td class="nowrap">f7af4415d81142fff1d5d7a528ff3cc5</td>
             </tr>
             <tr>
                 
@@ -277,8 +446,8 @@ td {
                         <a href='mini_allelescore_tabix_0.tsv.gz'>mini_allelescore_tabix_0.tsv.gz</a>
                     </td>
                 
-                <td class="nowrap">239.0 B</td>
-                <td class="nowrap">6a805fe106c1984d8fd15ae4636cc145</td>
+                <td class="nowrap">241.0 B</td>
+                <td class="nowrap">7a74d7f59dacfb1a3e11d62e580c632e</td>
             </tr>
             <tr>
                 
@@ -287,16 +456,7 @@ td {
                     </td>
                 
                 <td class="nowrap">126.0 B</td>
-                <td class="nowrap">a39e43345100f443e2d27dec0da3d625</td>
-            </tr>
-            <tr>
-                
-                    <td class="nowrap">
-                        <a href='scores_graph.png'>scores_graph.png</a>
-                    </td>
-                
-                <td class="nowrap">29.87 KB</td>
-                <td class="nowrap">5e3ee4d0b836b7a7e528eeb26df62799</td>
+                <td class="nowrap">c7c11a893526bdd0a1ba70ac896ef25a</td>
             </tr>
             <tr>
                 
@@ -309,5 +469,6 @@ td {
             </tr>
     </tbody>
     </table>
-    </body>
+    </div>
+  </body>
 </html>

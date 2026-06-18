@@ -1,141 +1,293 @@
 
-
 <html>
-<head>
-<style>
-h3,h4 {
-    margin-top:0.5em;
-    margin-bottom:0.5em;
-}
-table {
-    border-collapse: collapse;
-}
-th, td {
-    padding: 10px;
-}
-th {
-    font-size: 20px;
-}
-td {
-    font-size: 18px;
-}
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap">
+    <style>
+      body {
+        margin: 0;
+      }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    justify-content: center;
-}
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-.close {
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-}
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
+      .page-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 40px 100px;
+      }
 
-</style>
+            *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+      }
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
-            trigger.addEventListener("click", function () {
-                var modalId = this.getAttribute("data-modal-trigger");
-                var modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = "block";
-                    document.currentOpenModal = modal;
+      body {
+        color: #252e34;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: #5b778c;
+      }
+
+      h2 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3,h4 {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%
+      }
+
+      th {
+        background: #ecf1f6;
+      }
+
+      td,
+      th {
+        border: 1px solid #cfd8df;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+      }
+
+      tr {
+        height: 38px;
+      }
+
+      ul {
+        list-style-type: '-  ';
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #24699E;
+      }
+
+      a:hover {
+        color: #4C93C9;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #page-header {
+        display: flex;
+        align-items: center;
+        padding: 14px clamp(20px, 10%, 64px);
+        border-bottom: 1px solid #e4edf2;
+      }
+
+      #page-header a {
+        color: #24699E;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease-out;
+        font-size: 18px;
+      }
+
+      #page-header a:hover {
+        color: #4C93C9;
+      }
+
+      .histogram {
+        margin-bottom: 16px;
+      }
+
+      .histogram-thumbnail {
+        max-width: 200px;
+        cursor: pointer;
+      }
+
+      .text-muted {
+        color: #919191;
+      }
+
+      .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+
+      .scrollable-table-container thead {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+
+      .scrollable-table-container table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .scrollable-table-container th {
+        border: 0;
+        border-top: 1px solid #cfd8df;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container td {
+        border: 0;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container th:first-child,
+      .scrollable-table-container td:first-child {
+        border-left: 1px solid #cfd8df;
+      }
+      #chromosomes-table thead tr:nth-of-type(2) th {
+        border-top: none;
+      }
+
+      #resource-table {
+        margin-bottom: 70px;
+      }
+
+      #resource-table th {
+        text-align: end;
+        width: 100px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        justify-content: center;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .close {
+        float: right;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("[data-modal-trigger]").forEach(function (trigger) {
+                trigger.addEventListener("click", function () {
+                    var modalId = this.getAttribute("data-modal-trigger");
+                    var modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = "flex";
+                        document.currentOpenModal = modal;
+                    }
+                });
+            });
+
+            document.querySelectorAll(".close").forEach(function (closeButton) {
+                closeButton.addEventListener("click", function () {
+                    this.closest(".modal").style.display = "none";
+                    document.currentOpenModal = null;
+                });
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target.classList.contains("modal")) {
+                    event.target.style.display = "none";
+                    document.currentOpenModal = null;
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && document.currentOpenModal) {
+                    document.currentOpenModal.style.display = "none";
+                    document.currentOpenModal = null;
                 }
             });
         });
-
-        document.querySelectorAll(".close").forEach(function (closeButton) {
-            closeButton.addEventListener("click", function () {
-                this.closest(".modal").style.display = "none";
-                document.currentOpenModal = null;
-            });
-        });
-
-        window.addEventListener("click", function (event) {
-            if (event.target.classList.contains("modal")) {
-                event.target.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && document.currentOpenModal) {
-                document.currentOpenModal.style.display = "none";
-                document.currentOpenModal = null;
-            }
-        });
-    });
-</script>
-</head>
-    <body>
-    <h1>Resource</h1>
+    </script>
+  </head>
+  <body>
+    <nav id="page-header">
+      <a href="../index.html">← Back to main page</a>
+    </nav>
+    <div class="page-content">
+    <h2>Resource</h2>
     <div>
-        <table border="1">
+        <table id="resource-table">
             <tr>
-                <td>
-                    <b>Id:</b>
-                </td>
+                <th>Id</th>
                 <td>mini_pipeline</td>
             </tr>
             <tr>
-                <td>
-                    <b>Type:</b>
-                </td>
+                <th>Type</th>
                 <td>annotation_pipeline</td>
             </tr>
             <tr>
-                <td>
-                    <b>Version:</b>
-                </td>
+                <th>Version</th>
                 <td>0</td>
             </tr>
             <tr>
-                <td><b>Summary:</b></td>
+                <th>Summary</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>pipeline for mini_grr</p>
+                        <template shadowrootmode="open">pipeline for mini-GRR
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Description:</b>
-                </td>
+                <th>Description</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open"><p>Test pipeline for mini_grr</p>
+                        <template shadowrootmode="open">
+                             <style>
+                              img {
+                                max-width: min(100%, 800px);
+                                max-height: 50vh;
+                                width: auto;
+                                height: auto;
+                                display: block;
+                              }
+
+                              a {
+                                text-decoration: none;
+                                color: #24699E;
+                              }
+
+                              a:hover {
+                                color: #4C93C9;
+                              }
+                            </style><p>Test annotation pipeline for mini-GRR</p>
 
                         </template>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <b>Labels:</b>
-                </td>
+                <th>Labels</th>
                 <td>
                 
                 </td>
@@ -151,10 +303,6 @@ td {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <style>
-      * {
-        font-family: Roboto, FontAwesome;
-      }
-
       p {
         margin: 8px;
       }
@@ -162,15 +310,6 @@ td {
       body {
         width: 70%;
         margin: auto;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        font-size: 24px;
       }
 
       .preamble-header,
@@ -187,22 +326,6 @@ td {
 
       .pipeline-header {
         font-size: 36px;
-      }
-
-      table {
-        border-collapse: collapse;
-      }
-
-      th, td {
-        padding: 10px;
-      }
-
-      th {
-        font-size: 20px;
-      }
-
-      td {
-        font-size: 18px;
       }
 
       .annotator-doc {
@@ -226,13 +349,13 @@ td {
       }
 
       .annotator {
-        background-color: #eee;
+        background-color: #d0deec;
         padding: 10px 8px;
       }
 
       .annotator-title {
         font-size: 24px;
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .attribute-list {
@@ -251,7 +374,7 @@ td {
 
       .attribute-name {
         font-size: 22px;
-        font-weight: 500;
+        font-weight: 600;
         padding: 10px 8px;
         word-break: break-word;
       }
@@ -277,7 +400,7 @@ td {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        background-color: #f7f7f7;
+        background-color: #ecf1f6;
         margin-bottom: 12px;
       }
 
@@ -321,12 +444,135 @@ td {
         max-height: 95%;
       }
 
-      table, th, td {
-        border:1px solid rgb(218,218,218);
+            *, *::before, *::after {
+        box-sizing: border-box;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+      }
+
+      body {
+        color: #252e34;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: #5b778c;
+      }
+
+      h2 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3,h4 {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%
       }
 
       th {
-        background-color: #eee;
+        background: #ecf1f6;
+      }
+
+      td,
+      th {
+        border: 1px solid #cfd8df;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+      }
+
+      tr {
+        height: 38px;
+      }
+
+      ul {
+        list-style-type: '-  ';
+        padding-left: 15px;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #24699E;
+      }
+
+      a:hover {
+        color: #4C93C9;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #page-header {
+        display: flex;
+        align-items: center;
+        padding: 14px clamp(20px, 10%, 64px);
+        border-bottom: 1px solid #e4edf2;
+      }
+
+      #page-header a {
+        color: #24699E;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease-out;
+        font-size: 18px;
+      }
+
+      #page-header a:hover {
+        color: #4C93C9;
+      }
+
+      .histogram {
+        margin-bottom: 16px;
+      }
+
+      .histogram-thumbnail {
+        max-width: 200px;
+        cursor: pointer;
+      }
+
+      .text-muted {
+        color: #919191;
+      }
+
+      .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+
+      .scrollable-table-container thead {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+
+      .scrollable-table-container table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .scrollable-table-container th {
+        border: 0;
+        border-top: 1px solid #cfd8df;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container td {
+        border: 0;
+        border-bottom: 1px solid #cfd8df;
+        border-right: 1px solid #cfd8df;
+      }
+      .scrollable-table-container th:first-child,
+      .scrollable-table-container td:first-child {
+        border-left: 1px solid #cfd8df;
+      }
+      #chromosomes-table thead tr:nth-of-type(2) th {
+        border-top: none;
       }
     </style>
   </head>
@@ -363,10 +609,6 @@ td {
     
 
     
-    <div class="pipeline_path">
-      Pipeline path: 
-    </div>
-    
 
     <h2 class="annotator-list-header">Annotators</h2>
     
@@ -378,12 +620,12 @@ td {
                 <div class="attribute-name">
                   pos_bw_0
                 </div>
-                <div class="attribute-type">Type: float </div>
+                <div class="attribute-type">Type:  </div>
               </div>
               <div class="attribute-description">
                 <p>bw score</p>
 
-<p><strong>position_aggregator</strong>: <code>mean</code> [default]</p>
+<p><strong>position_aggregator</strong>: mean</p>
 
                 
                   <img src="../mini_positionscore_bw/statistics/histogram_pos_bw_0.png" alt="HISTOGRAM">
@@ -404,7 +646,7 @@ td {
               <p>Annotator to use with genomic scores depending on genomic position like
 phastCons, phyloP, FitCons2, etc.</p>
 
-<p><a href="https://www.iossifovlab.com/gpfuserdocs/administration/annotation.html#position-score" target="_blank">More info</a></p>
+<p><a href="https://iossifovlab.com/gaindocs/annotation_infrastructure.html#position-score-annotator" target="_blank">More info</a></p>
 
             </div>
           
@@ -431,7 +673,7 @@ phastCons, phyloP, FitCons2, etc.</p>
 <html>
 
 
-    <h1>Files</h1>
+    <h2 style="margin-top: 70px;">Files</h2>
     <table>
     <thead>
         <tr>
@@ -447,8 +689,8 @@ phastCons, phyloP, FitCons2, etc.</p>
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">150.0 B</td>
-                <td class="nowrap">1c826119016028bbc16e0bac271c3aa1</td>
+                <td class="nowrap">161.0 B</td>
+                <td class="nowrap">63f016501729864d13bbb026fb2c3954</td>
             </tr>
             <tr>
                 
@@ -457,7 +699,7 @@ phastCons, phyloP, FitCons2, etc.</p>
                     </td>
                 
                 <td class="nowrap">1.35 KB</td>
-                <td class="nowrap">b312d9bf756de73ba58704e89230c63c</td>
+                <td class="nowrap">97e35d498038090f73f4b956ec78753d</td>
             </tr>
             <tr>
                 
@@ -470,5 +712,6 @@ phastCons, phyloP, FitCons2, etc.</p>
             </tr>
     </tbody>
     </table>
-    </body>
+    </div>
+  </body>
 </html>

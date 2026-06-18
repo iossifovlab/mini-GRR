@@ -27,5 +27,4 @@ meta:
   summary: |
     CNV collection resource
   description: |
-    A small collection of copy number variants (CNVs) with their genomic coordinates and type (deletion or duplication).
-
+    A toy collection of copy number variants (CNVs) with their genomic coordinates and type (deletion or duplication).

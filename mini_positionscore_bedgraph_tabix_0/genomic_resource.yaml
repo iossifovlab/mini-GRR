@@ -20,7 +20,7 @@ table:
 scores:
   - id: pos_bedgraph_0
     type: float
-    desc: "a description"
+    desc: "Toy numeric position score from a BEDGraph file"
     large_values_desc: "more"
     small_values_desc: "less"
     index: 3
@@ -35,10 +35,10 @@ scores:
 
 meta:
   summary: |
-    0-based bedgraph position score
+    0-based bedgraph position score resource
     
 
   description: |
-    
-    my description
-    ![The score graphs](./scores_graph.png "SSSS")
+    This toy position score resource demonstrates how per-position genomic scores can be stored in a bedGraph file and queried as a tabix-indexed resource. The file uses 0-based coordinates on the mini genome, with one score for each position on chr1 and chr2. The fourth column contains the numeric score assigned to each position.
+
+    The accompanying dataprep.sh script compresses mini\_positionscore\_bedgraph\_0.bedgraph with bgzip and creates a tabix index using tabix -p bed.

@@ -3,6 +3,6 @@ filename: mini_pipeline.yaml
 
 meta:
   summary: |
-    pipeline for mini_grr
+    pipeline for mini-GRR
   description: |
-    Test pipeline for mini_grr
+    Test annotation pipeline for mini-GRR

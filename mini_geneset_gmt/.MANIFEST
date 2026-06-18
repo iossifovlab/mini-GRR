@@ -1,6 +1,27 @@
-- md5: d8107d6b81ebaceba971504cd3179456
+- md5: cc39dca6f158b5f39b51509c8c7ce4ef
   name: genomic_resource.yaml
   size: 624
 - md5: 9d364d30561311e0f77c0903ad169987
-  name: mini_geneset-gmt.gmt.txt
+  name: mini_geneset-gmt.gmt
   size: 61
+- md5: 6b5fcaae10d819935872bfa2775d5e59
+  name: statistics/gene_collection_count_statistics.json
+  size: 55
+- md5: 99ec1717d48cfb2ba683df965e0ca4f2
+  name: statistics/gene_sets_list_statistics.json
+  size: 100
+- md5: f58fd732c97a09b58af9d5492dfa7a1f
+  name: statistics/gene_sets_per_gene_histogram.json
+  size: 165
+- md5: 0d7678da1c69bc58839da6109bdb2591
+  name: statistics/gene_sets_per_gene_histogram.png
+  size: 19200
+- md5: 02f72f86fc0be6843a11a898e33de5a2
+  name: statistics/genes_per_gene_set_histogram.json
+  size: 153
+- md5: 27717b859ae4f92dac4cfba61ac102ea
+  name: statistics/genes_per_gene_set_histogram.png
+  size: 12649
+- md5: 9b3025a1a99a44149dfb09522d5d73f3
+  name: statistics/stats_hash
+  size: 87

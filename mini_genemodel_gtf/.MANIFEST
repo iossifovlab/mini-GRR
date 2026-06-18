@@ -1,21 +1,15 @@
 - md5: 0ccbcb2a83d37686eeebad33f6be6609
   name: dataprep.sh
   size: 28
-- md5: 4eaaf0e86f52df49e297016cd0379faa
+- md5: 813df73d918723828498c76568ad261a
   name: genomic_resource.yaml
-  size: 201
-- md5: a843bf516e89f9d4192da1e8f70b0647
+  size: 491
+- md5: ab26e714365518d2317f017b98db890e
   name: mini_gtf.gtf
-  size: 1276
-- md5: 1b40b51ef56a01ced4d3ded878666956
-  name: mini_refseq.txt
-  size: 61
+  size: 1176
 - md5: 852ea4a05c2031084d480387aa2a3445
   name: statistics/stats.yaml
   size: 309
-- md5: cad58b6ea17ecce02b9e96d5fda46f4f
+- md5: 5bb983918e71c8e7948c055dcd14596f
   name: statistics/stats_hash
   size: 118
-- md5: 526e2c838afc4ddbea2a4d4e95e07853
-  name: to_gtf.py
-  size: 368

@@ -1,8 +1,8 @@
 type: gene_score
-filename: mini_genescore.csv
+filename: mini_genescore.csv.gz
 scores:
   - id: my_genescore
-    desc: "level"
+    desc: Toy numeric gene score
     histogram:
       type: number
       number_of_bins: 3
@@ -15,6 +15,6 @@ scores:
     large_values_desc: "large"
 meta:
   summary: |
-    a gene score
+    Toy gene score resource
   description: |
-    my description
+    This toy gene score resource demonstrates how gene-level annotations can be stored in a gzip-compressed CSV file keyed by gene name. It includes a minimal example gene with supporting metadata columns and a numeric gene score.

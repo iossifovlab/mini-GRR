@@ -1,6 +1,6 @@
-- md5: 238659e80d409eaa120166e0f6e413a0
+- md5: 7f00bfdfb5d037e0692d5a9f0b93a88b
   name: genomic_resource.yaml
-  size: 570
+  size: 566
 - md5: 96c2088e883f8e9aeb5831b3305ac517
   name: mini_CNV.txt
   size: 128
