@@ -1,15 +1,12 @@
-- md5: 287c1d5236a2f2daa7b9ee62e92e10f7
+- md5: 1adc71597ca662339c3c1e9ef82268c6
   name: genomic_resource.yaml
-  size: 636
+  size: 1457
 - md5: 862d3e678e7a17f0a9c0cde9c0dc6692
   name: histogram_pos_tsv_1.png
   size: 10143
 - md5: aa21e2ddc0c4264c36aa14055286c6eb
   name: mini_positionscore_tsv_1.tsv
   size: 236
-- md5: 7776a487ddb3361a28be624cf1395f34
-  name: scores_graph.png
-  size: 28420
 - md5: a49f9269adb15f8f836b44d3614cf369
   name: statistics/histogram_1based_tsv.png
   size: 10249
@@ -22,12 +19,12 @@
 - md5: 28c9fda81d22d644ae4082a87cea9246
   name: statistics/histogram_a_pos_score.yaml
   size: 1453
-- md5: e1703b42ed50bdfc007a3263f197f10a
+- md5: e0eec2d8966d5bf1d096c20c3632c852
   name: statistics/histogram_pos_tsv_1.png
-  size: 10367
-- md5: 28c9fda81d22d644ae4082a87cea9246
+  size: 19898
+- md5: 4f49ec5feb5c45ac2c969e6ae05117fb
   name: statistics/histogram_pos_tsv_1.yaml
-  size: 1453
-- md5: 6c0958867f7395e4c28826f38f947824
+  size: 534
+- md5: a680572bb2328fc36c90a7de1b990386
   name: statistics/stats_hash
-  size: 844
+  size: 812

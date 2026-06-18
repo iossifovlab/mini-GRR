@@ -666,7 +666,7 @@
       },
       "scores": [
         {
-          "desc": "Toy numeric position score from a BEDGraph file",
+          "desc": "Toy numeric position score from a bedgraph file",
           "histogram": {
             "number_of_bins": 100,
             "type": "number",
@@ -709,7 +709,7 @@
         "size": 116
       },
       {
-        "md5": "d88bbae5b497f2f395d1478318c01fd0",
+        "md5": "0f25fe468ccc4ecc950c26c7d7a1777c",
         "name": "genomic_resource.yaml",
         "size": 1146
       },
@@ -727,11 +727,6 @@
         "md5": "0a26f3e21972feef1de3e5da9341a7b1",
         "name": "mini_positionscore_bedgraph_0.bedgraph.gz.tbi",
         "size": 123
-      },
-      {
-        "md5": "1f3ad02950adb3c6f4c322436dd62678",
-        "name": "scores_graph.png",
-        "size": 30673
       },
       {
         "md5": "cba244d9ac48729db30fa8426201a9ae",
@@ -840,11 +835,6 @@
         "md5": "29aa4ab2e6e6e3fc26259554cb7a9bf3",
         "name": "mini_positionscore_interval_bedgraph_0.bedgraph.gz.tbi",
         "size": 123
-      },
-      {
-        "md5": "cc214dd9d089f783dba237e9c4834e23",
-        "name": "scores_graph.png",
-        "size": 30291
       },
       {
         "md5": "8cd2f890b7bf1fb5d514fe96ecf6b86a",
@@ -963,11 +953,6 @@
         "size": 12944
       },
       {
-        "md5": "30058c43ee0988fa3def6159a8024bd4",
-        "name": "scores_graph.png",
-        "size": 26853
-      },
-      {
         "md5": "06b6d4a2da4a03f2865a6dd8f36482ec",
         "name": "sorted_mini_positionscore_bw_0.bedgraph",
         "size": 55
@@ -1003,12 +988,12 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![The score graphs](./scores_graph.png \"SSSS\")",
+        "description": "This toy position score resource demonstrates how per-position genomic scores can be stored in a tab-separated file and queried as a tabix-indexed resource. The file has no header and contains three columns: chromosome, 0-based position, and numeric score. The score applies to the specified position on the mini genome. This resource contains the same toy position-score information as the accompanying 1-based position score resource, ``mini_positionscore_tabix_1``, but stores positions using 0-based coordinates.\n\nData, shown in compact form:\n\n| Position | chr1 | chr2 |\n|:---------:|:-----------:|:-----------:|\n| 0 | 0.0 | 0.0 |\n| 1 | 0.1 | 0.1 |\n| 2 | 0.2 | 0.2 |\n| 3 | 0.3 | 0.3 |\n| 4 | 0.4 | 0.4 |\n| 5 | 0.5 | 0.5 |\n| 6 | 0.6 | 0.6 |\n| 7 | 0.7 | 0.7 |\n| 8 | 0.8 | 0.8 |\n| 9 | 0.9 | 0.9 |\n\nThe accompanying dataprep.sh script compresses mini\\_positionscore\\_tabix\\_0.tsv with bgzip and creates a tabix index using the chromosome column and the position column.\n",
         "summary": "0-based tabix position score\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy numeric 0-based position score from a tabix-indexed TSV file",
           "histogram": {
             "number_of_bins": 100,
             "type": "number",
@@ -1051,9 +1036,9 @@
         "size": 386
       },
       {
-        "md5": "e217a75902dc406dbe9dc9728c8a43f2",
+        "md5": "40a016e37c873598e219c6cc22fc71d1",
         "name": "genomic_resource.yaml",
-        "size": 675
+        "size": 1682
       },
       {
         "md5": "2283da2edfb2c8bac928db3f4f689785",
@@ -1069,11 +1054,6 @@
         "md5": "f4ba3ad33d74415c50b41d2f0972f860",
         "name": "mini_positionscore_tabix_0.tsv.gz.tbi",
         "size": 121
-      },
-      {
-        "md5": "e5a4400aafc15cfc7b892a2902e059eb",
-        "name": "scores_graph.png",
-        "size": 29410
       },
       {
         "md5": "5f13e54a2783649d486acdbdc1bec47d",
@@ -1106,14 +1086,14 @@
         "size": 1453
       },
       {
-        "md5": "2a8b54ccfc6eb92d782035b2d54dc2c2",
+        "md5": "ef2322103e6dc5d61fcfc35c7584e0b0",
         "name": "statistics/histogram_pos_tabix_0.png",
-        "size": 10749
+        "size": 16024
       },
       {
-        "md5": "28c9fda81d22d644ae4082a87cea9246",
+        "md5": "cea7d09f7a6fc33411fb8c9cd543336c",
         "name": "statistics/histogram_pos_tabix_0.yaml",
-        "size": 1453
+        "size": 2163
       },
       {
         "md5": "dc4b725268feadb4b3694d5eb93381a2",
@@ -1136,12 +1116,12 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![The score graphs](./scores_graph.png \"SSSS\")\n",
+        "description": "\nThis toy position score resource demonstrates how per-position genomic scores can be stored in a tab-separated file and queried as a tabix-indexed resource. The file has no header and contains three columns: chromosome, 1-based position, and numeric score. The score applies to the specified position on the mini genome. This resource contains the same toy position-score information as the accompanying 0-based position score resource, ``mini_positionscore_tabix_0``, but stores positions using 1-based coordinates.\n\nData, shown in compact form:\n\n| Position | chr1 | chr2 |\n|:---------:|:-----------:|:-----------:|\n| 1 | 0.0 | 0.0 |\n| 2 | 0.1 | 0.1 |\n| 3 | 0.2 | 0.2 |\n| 4 | 0.3 | 0.3 |\n| 5 | 0.4 | 0.4 |\n| 6 | 0.5 | 0.5 |\n| 7 | 0.6 | 0.6 |\n| 8 | 0.7 | 0.7 |\n| 9 | 0.8 | 0.8 |\n| 10 | 0.9 | 0.9 |\n\nThe accompanying dataprep.sh script compresses mini\\_positionscore\\_tabix\\_1.tsv with bgzip and creates a tabix index using the chromosome column and the position column.\n",
         "summary": "1-based tabix position score\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy numeric 1-based position score from a tabix-indexed TSV file",
           "histogram": {
             "number_of_bins": 100,
             "type": "number",
@@ -1183,9 +1163,9 @@
         "size": 383
       },
       {
-        "md5": "07f2ae100957f5cab7a3c2329b62e206",
+        "md5": "ad07e792e88bdd176d5a2d2263127aa9",
         "name": "genomic_resource.yaml",
-        "size": 657
+        "size": 1669
       },
       {
         "md5": "aa21e2ddc0c4264c36aa14055286c6eb",
@@ -1201,11 +1181,6 @@
         "md5": "3e87d3b1263695c09852d633c92c0532",
         "name": "mini_positionscore_tabix_1.tsv.gz.tbi",
         "size": 118
-      },
-      {
-        "md5": "4a07f7e142722c68ff80f5dea9f78248",
-        "name": "scores_graph.png",
-        "size": 29087
       },
       {
         "md5": "a49f9269adb15f8f836b44d3614cf369",
@@ -1228,14 +1203,14 @@
         "size": 1453
       },
       {
-        "md5": "20b4af5cbc8525a861eaea85b081244d",
+        "md5": "144a24a3b94efcec76719b76f7885ac4",
         "name": "statistics/histogram_pos_tabix_1.png",
-        "size": 10567
+        "size": 15938
       },
       {
-        "md5": "28c9fda81d22d644ae4082a87cea9246",
+        "md5": "cea7d09f7a6fc33411fb8c9cd543336c",
         "name": "statistics/histogram_pos_tabix_1.yaml",
-        "size": 1453
+        "size": 2163
       },
       {
         "md5": "e1703b42ed50bdfc007a3263f197f10a",
@@ -1258,14 +1233,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![The score graphs](./scores_graph.png \"SSSS\")",
+        "description": "This toy position score resource demonstrates how genomic scores can be stored in a tab-separated file with chromosome, start, end, and score columns, and queried as a tabix-indexed resource. The file has no header and uses 0-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.\n\nThis resource contains the same toy position-score information as the accompanying 1-based interval position score resource, ``mini_positionscore_tabix_interval_1``, but stores coordinates using 0-based positions.\n\nThe accompanying ``dataprep.sh`` script compresses ``mini_positionscore_interval_tabix_0.tsv`` with ``bgzip`` and creates a tabix index using the chromosome, start, and end columns.\n\ndata:\n\n| Chromosome | Start | End | Score |\n|:----------:|:-----:|:---:|:-----:|\n| chr1 | 0 | 5 | 0.0 |\n| chr1 | 5 | 10 | 0.1 |\n| chr2 | 0 | 5 | 0.2 |\n| chr2 | 5 | 10 | 0.3 |",
         "summary": "0-based tabix position score (interval)\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy numeric 0-based interval position score from a tabix-indexed TSV file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -1306,9 +1281,9 @@
         "size": 395
       },
       {
-        "md5": "bc35c20709bc985d20e31af8b84a3591",
+        "md5": "986b28e067f91b081001b38e57617d8c",
         "name": "genomic_resource.yaml",
-        "size": 698
+        "size": 1630
       },
       {
         "md5": "41ca2ab0b1e7ef18110ca3f66b1f7a55",
@@ -1324,11 +1299,6 @@
         "md5": "29aa4ab2e6e6e3fc26259554cb7a9bf3",
         "name": "mini_positionscore_interval_tabix_0.tsv.gz.tbi",
         "size": 123
-      },
-      {
-        "md5": "69e778f245e794999154941de585c959",
-        "name": "scores_graph.png",
-        "size": 28112
       },
       {
         "md5": "b1c28d9eef0fc3f9934e4d9ec943975f",
@@ -1371,14 +1341,14 @@
         "size": 1453
       },
       {
-        "md5": "3cc3ade305c142b6ad45c72fd291c538",
+        "md5": "8ff1fcd5b616608801f530f0ee683afc",
         "name": "statistics/histogram_posint_tabix_0.png",
-        "size": 10985
+        "size": 16127
       },
       {
-        "md5": "7e9af37da789a705d841e7ee589b8b92",
+        "md5": "74ce9c8ba74c09bb42ee55a7a99ea9d4",
         "name": "statistics/histogram_posint_tabix_0.yaml",
-        "size": 1453
+        "size": 534
       },
       {
         "md5": "e8c57af37fd04a054846b5d92c82db7b",
@@ -1391,9 +1361,9 @@
         "size": 1453
       },
       {
-        "md5": "dd2d0831324e5b29297fedf5a04310f4",
+        "md5": "2a9ddefda2c53572d283600eff218686",
         "name": "statistics/stats_hash",
-        "size": 1026
+        "size": 1025
       }
     ],
     "version": "0"
@@ -1401,14 +1371,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![The score graphs](./scores_graph.png \"SSSS\")",
+        "description": "This toy position score resource demonstrates how genomic scores can be stored in a tab-separated file with chromosome, start, end, and score columns, and queried as a tabix-indexed resource. The file has no header and uses 1-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.\n\nThis resource contains the same toy position-score information as the accompanying 0-based interval position score resource, ``mini_positionscore_tabix_interval_0``, but stores coordinates using 1-based positions.\n\nThe accompanying ``dataprep.sh`` script compresses ``mini_positionscore_interval_tabix_1.tsv`` with ``bgzip`` and creates a tabix index using the chromosome, start, and end columns.\n\ndata:\n\n| Chromosome | Start | End | Score |\n|:----------:|:-----:|:---:|:-----:|\n| chr1 | 1 | 5 | 0.0 |\n| chr1 | 6 | 10 | 0.1 |\n| chr2 | 1 | 5 | 0.2 |\n| chr2 | 6 | 10 | 0.3 |",
         "summary": "1-based tabix position score (interval)\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy numeric 1-based interval position score from a tabix-indexed TSV file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -1448,9 +1418,9 @@
         "size": 392
       },
       {
-        "md5": "c0cb0e69ff1761044bde9cb3d41a381a",
+        "md5": "2d039f0cdce04c7efbd6d9d207ffc690",
         "name": "genomic_resource.yaml",
-        "size": 679
+        "size": 1611
       },
       {
         "md5": "bb4db0117b174a1114fc1ae0143a8fb6",
@@ -1466,11 +1436,6 @@
         "md5": "b43a279e596d677d301431e84cb395ef",
         "name": "mini_positionscore_interval_tabix_1.tsv.gz.tbi",
         "size": 121
-      },
-      {
-        "md5": "e191dfd90c1b913c7f4137984dd2f818",
-        "name": "scores_graph.png",
-        "size": 27802
       },
       {
         "md5": "b1c28d9eef0fc3f9934e4d9ec943975f",
@@ -1523,14 +1488,14 @@
         "size": 1453
       },
       {
-        "md5": "8d375cca1591cc73ee8d3f3c347d282e",
+        "md5": "50ade56da9388223c709da0c3156b16a",
         "name": "statistics/histogram_posint_tabix_1.png",
-        "size": 10814
+        "size": 15982
       },
       {
-        "md5": "7e9af37da789a705d841e7ee589b8b92",
+        "md5": "74ce9c8ba74c09bb42ee55a7a99ea9d4",
         "name": "statistics/histogram_posint_tabix_1.yaml",
-        "size": 1453
+        "size": 534
       },
       {
         "md5": "5b00b0583edc47a0d36110baca0efbbe",
@@ -1553,9 +1518,9 @@
         "size": 1453
       },
       {
-        "md5": "367294f78280fc2cdb002a40bc749ccc",
+        "md5": "cd4246f58457436ac6bfc94634a330ad",
         "name": "statistics/stats_hash",
-        "size": 998
+        "size": 997
       }
     ],
     "version": "0"
@@ -1563,14 +1528,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![The score graphs](./scores_graph.png \"SSSS\")",
+        "description": "\nThis toy position score resource demonstrates how per-position genomic scores can be stored in an uncompressed tab-separated file. The file has no header and contains three columns: chromosome, 0-based position, and numeric score. The score applies to the specified position on the mini genome.\n\nThis resource contains the same toy position-score information as the accompanying 1-based TSV position score resource, ``mini_positionscore_tsv_1``, but stores positions using 0-based coordinates.\n\nData, shown in compact form:\n\n| Position | chr1 score | chr2 score |\n|:--------:|:----------:|:----------:|\n| 0 | 0.0 | 0.0 |\n| 1 | 0.1 | 0.1 |\n| 2 | 0.2 | 0.2 |\n| 3 | 0.3 | 0.3 |\n| 4 | 0.4 | 0.4 |\n| 5 | 0.5 | 0.5 |\n| 6 | 0.6 | 0.6 |\n| 7 | 0.7 | 0.7 |\n| 8 | 0.8 | 0.8 |\n| 9 | 0.9 | 0.9 |",
         "summary": "0-based tsv position score\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy 0-based numeric position score from an uncompressed TSV file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -1604,19 +1569,14 @@
     "id": "mini_positionscore_tsv_0",
     "manifest": [
       {
-        "md5": "5131aa15e7b974a22fc0b694f3c244e4",
+        "md5": "6834778474919f59703170ecc031c9fd",
         "name": "genomic_resource.yaml",
-        "size": 652
+        "size": 1427
       },
       {
         "md5": "2283da2edfb2c8bac928db3f4f689785",
         "name": "mini_positionscore_tsv_0.tsv",
         "size": 234
-      },
-      {
-        "md5": "2c38003a3766375fd097212ffe51423b",
-        "name": "scores_graph.png",
-        "size": 30317
       },
       {
         "md5": "5f13e54a2783649d486acdbdc1bec47d",
@@ -1649,19 +1609,19 @@
         "size": 1453
       },
       {
-        "md5": "2302fa81659dc57b3c64d93eccf124ed",
+        "md5": "91232c58198ccef1c94b7c90c26eb819",
         "name": "statistics/histogram_pos_tsv_0.png",
-        "size": 15054
+        "size": 20026
       },
       {
-        "md5": "295084397865e180a4e6209094dc9104",
+        "md5": "4f49ec5feb5c45ac2c969e6ae05117fb",
         "name": "statistics/histogram_pos_tsv_0.yaml",
-        "size": 1453
+        "size": 534
       },
       {
-        "md5": "a26815fe584d954d82b1d3decb90d73f",
+        "md5": "29e99ed23a3029456b1b31cc22b79dba",
         "name": "statistics/stats_hash",
-        "size": 841
+        "size": 840
       }
     ],
     "version": "0"
@@ -1669,14 +1629,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![My Position Score Image](histogram_pos_tsv_1.png)",
+        "description": "\nThis toy position score resource demonstrates how per-position genomic scores can be stored in an uncompressed tab-separated file. The file has no header and contains three columns: chromosome, 1-based position, and numeric score. The score applies to the specified position on the mini genome.\n\nThis resource contains the same toy position-score information as the accompanying 0-based TSV position score resource, ``mini_positionscore_tsv_0``, but stores positions using 1-based coordinates.\n\nData, shown in compact form:\n\n| Position | chr1 score | chr2 score |\n|:--------:|:----------:|:----------:|\n| 1 | 0.0 | 0.0 |\n| 2 | 0.1 | 0.1 |\n| 3 | 0.2 | 0.2 |\n| 4 | 0.3 | 0.3 |\n| 5 | 0.4 | 0.4 |\n| 6 | 0.5 | 0.5 |\n| 7 | 0.6 | 0.6 |\n| 8 | 0.7 | 0.7 |\n| 9 | 0.8 | 0.8 |\n| 10 | 0.9 | 0.9 |",
         "summary": "1-based tsv position score\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy 1-based numeric position score from an uncompressed TSV file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -1696,7 +1656,6 @@
           "index": 0
         },
         "filename": "mini_positionscore_tsv_1.tsv",
-        "header_mode": "none",
         "pos_begin": {
           "index": 1
         },
@@ -1710,9 +1669,9 @@
     "id": "mini_positionscore_tsv_1",
     "manifest": [
       {
-        "md5": "287c1d5236a2f2daa7b9ee62e92e10f7",
+        "md5": "1adc71597ca662339c3c1e9ef82268c6",
         "name": "genomic_resource.yaml",
-        "size": 636
+        "size": 1457
       },
       {
         "md5": "862d3e678e7a17f0a9c0cde9c0dc6692",
@@ -1723,11 +1682,6 @@
         "md5": "aa21e2ddc0c4264c36aa14055286c6eb",
         "name": "mini_positionscore_tsv_1.tsv",
         "size": 236
-      },
-      {
-        "md5": "7776a487ddb3361a28be624cf1395f34",
-        "name": "scores_graph.png",
-        "size": 28420
       },
       {
         "md5": "a49f9269adb15f8f836b44d3614cf369",
@@ -1750,19 +1704,19 @@
         "size": 1453
       },
       {
-        "md5": "e1703b42ed50bdfc007a3263f197f10a",
+        "md5": "e0eec2d8966d5bf1d096c20c3632c852",
         "name": "statistics/histogram_pos_tsv_1.png",
-        "size": 10367
+        "size": 19898
       },
       {
-        "md5": "28c9fda81d22d644ae4082a87cea9246",
+        "md5": "4f49ec5feb5c45ac2c969e6ae05117fb",
         "name": "statistics/histogram_pos_tsv_1.yaml",
-        "size": 1453
+        "size": 534
       },
       {
-        "md5": "6c0958867f7395e4c28826f38f947824",
+        "md5": "a680572bb2328fc36c90a7de1b990386",
         "name": "statistics/stats_hash",
-        "size": 844
+        "size": 812
       }
     ],
     "version": "0"
@@ -1770,14 +1724,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![My Position Score Image](scores_graph.png)",
-        "summary": "1-based tsv position score\n"
+        "description": "This toy position score resource demonstrates how two per-position genomic scores can be stored in a single uncompressed tab-separated file. The file has no header and contains four columns: chromosome, 1-based position, numeric score, and categorical score. The numeric score is read as `pos_tsv_1`, and the categorical score is read as `pos_tsv_1_st`. Empty categorical values are treated as missing values.\n\nThis resource uses 1-based positions on the mini genome and extends the simpler TSV position-score examples by including both a numeric and a categorical score column.\n\nData, shown in compact form:\n\n| Position | chr1 numeric | chr1 category | chr2 numeric | chr2 category |\n|:--------:|:------------:|:-------------:|:------------:|:-------------:|\n| 1 | 0.0 | good | 0.0 | good |\n| 2 | 0.1 | good | 0.1 | bad |\n| 3 | 0.2 | good | 0.2 | bad |\n| 4 | \u2014 | \u2014 | 0.3 | bad |\n| 5 | 0.4 | good | 0.4 | bad |\n| 6 | 0.5 | good | 0.5 | bad |\n| 7 | 0.6 | \u2014 | 0.6 | bad |\n| 8 | 0.7 | bad | 0.7 | bad |\n| 9 | \u2014 | bad | 0.8 | bad |\n| 10 | 0.9 | good | 0.9 | bad |",
+        "summary": "1-based tsv position score resource with two scores\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy 1-based numeric position score from an uncompressed TSV file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -1792,7 +1746,7 @@
           "type": "float"
         },
         {
-          "desc": "a description",
+          "desc": "Toy 0-based categorical position score from an uncompressed TSV file",
           "histogram": {
             "type": "categorical"
           },
@@ -1823,19 +1777,14 @@
     "id": "mini_positionscore_tsv_1_twoscores",
     "manifest": [
       {
-        "md5": "be541ce053a8f6bbe3b1a0f9f28484fb",
+        "md5": "720058577603186ee659222b1ddc5ef5",
         "name": "genomic_resource.yaml",
-        "size": 763
+        "size": 1948
       },
       {
         "md5": "8b14183dc4dcd44cddb6b7e770162866",
         "name": "mini_positionscore_tsv_1.tsv",
         "size": 301
-      },
-      {
-        "md5": "d28f7a131b61d56aae2584228b5fcc62",
-        "name": "scores_graph.png",
-        "size": 41006
       },
       {
         "md5": "a49f9269adb15f8f836b44d3614cf369",
@@ -1858,19 +1807,19 @@
         "size": 1453
       },
       {
-        "md5": "31c9e134f2723c3bf8a362755c339c10",
+        "md5": "976d0d767f799aafcc7fec85b9c8457c",
         "name": "statistics/histogram_pos_tsv_1.png",
-        "size": 13191
+        "size": 19916
       },
       {
-        "md5": "ddb5c79fb821efd46af569307421a444",
+        "md5": "2068828fa23fd7c829565d72827341c9",
         "name": "statistics/histogram_pos_tsv_1.yaml",
-        "size": 2163
+        "size": 534
       },
       {
-        "md5": "a7b48b86b67ac38807e4b4351cad69c9",
+        "md5": "e5290c3069e218428521bfad293b1ed6",
         "name": "statistics/histogram_pos_tsv_1_st.png",
-        "size": 8975
+        "size": 14389
       },
       {
         "md5": "5272eba36c4b5a955e49ed0f1b964b6e",
@@ -1878,9 +1827,9 @@
         "size": 169
       },
       {
-        "md5": "15faab5ccd9de52cc1769e07d7153a73",
+        "md5": "c4af572ff55264ab4da54888966fab1a",
         "name": "statistics/stats_hash",
-        "size": 1103
+        "size": 1102
       }
     ],
     "version": "0"
@@ -1888,14 +1837,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![The score graphs](./scores_graph.png \"SSSS\")",
+        "description": "This toy position score resource demonstrates how genomic scores can be stored in an uncompressed tab-separated file with chromosome, start, end, and score columns. The file has no header and uses 0-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.\n\nThis resource contains the same toy position-score information as the accompanying 1-based interval TSV position score resource, ``mini_positionscore_tsv_interval_1``, but stores coordinates using 0-based positions.\n\nExample data:\n\n| Chromosome | Start | End | Score |\n|:----------:|:-----:|:---:|:-----:|\n| chr1 | 0 | 5 | 0.0 |\n| chr1 | 5 | 10 | 0.1 |\n| chr2 | 0 | 5 | 0.2 |\n| chr2 | 5 | 10 | 0.3 |",
         "summary": "0-based tsv position score (interval)\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy 0-based numeric interval position score from an uncompressed TSV file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -1930,19 +1879,14 @@
     "id": "mini_positionscore_tsv_interval_0",
     "manifest": [
       {
-        "md5": "c0071bae9ba15cfe615dd1add8046434",
+        "md5": "c52cd26fc9942802db383750ca0df745",
         "name": "genomic_resource.yaml",
-        "size": 673
+        "size": 1375
       },
       {
         "md5": "41ca2ab0b1e7ef18110ca3f66b1f7a55",
         "name": "mini_positionscore_interval_tsv_0.tsv",
         "size": 54
-      },
-      {
-        "md5": "f103f2cc8eae89781863024ca947162b",
-        "name": "scores_graph.png",
-        "size": 27546
       },
       {
         "md5": "b1c28d9eef0fc3f9934e4d9ec943975f",
@@ -1985,14 +1929,14 @@
         "size": 1453
       },
       {
-        "md5": "2de449dc2d0d85ef699d4c2efadf0744",
+        "md5": "39c0ba31cfea64bea12056c88723adde",
         "name": "statistics/histogram_posint_tsv_0.png",
-        "size": 10740
+        "size": 15930
       },
       {
-        "md5": "7e9af37da789a705d841e7ee589b8b92",
+        "md5": "74ce9c8ba74c09bb42ee55a7a99ea9d4",
         "name": "statistics/histogram_posint_tsv_0.yaml",
-        "size": 1453
+        "size": 534
       },
       {
         "md5": "bc06f8e6d6ff438bb0cb987aaeabc858",
@@ -2005,9 +1949,9 @@
         "size": 1453
       },
       {
-        "md5": "5bdfc9e7a59d044aa5ed2cb2588776d1",
+        "md5": "ee01d5a5b63591d39ddcd10e17228a16",
         "name": "statistics/stats_hash",
-        "size": 893
+        "size": 892
       }
     ],
     "version": "0"
@@ -2015,14 +1959,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nmy description\n![The score graphs](./scores_graph.png \"SSSS\")",
+        "description": "This toy position score resource demonstrates how genomic scores can be stored in an uncompressed tab-separated file with chromosome, start, end, and score columns. The file has no header and uses 1-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.\n\nThis resource contains the same toy position-score information as the accompanying 0-based interval TSV position score resource, ``mini_positionscore_tsv_interval_0``, but stores coordinates using 1-based positions.\n\nData:\n\n| Chromosome | Start | End | Score |\n|:----------:|:-----:|:---:|:-----:|\n| chr1 | 1 | 5 | 0.0 |\n| chr1 | 6 | 10 | 0.1 |\n| chr2 | 1 | 5 | 0.2 |\n| chr2 | 6 | 10 | 0.3 |",
         "summary": "1-based tsv position score (interval)\n"
       },
       "scores": [
         {
-          "desc": "a description",
+          "desc": "Toy 1-based numeric interval position score from an uncompressed TSV file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -2056,19 +2000,14 @@
     "id": "mini_positionscore_tsv_interval_1",
     "manifest": [
       {
-        "md5": "6ff5b39fb13d371910eb4daadbee09c6",
+        "md5": "6967d3eafe90246bbda9866219059562",
         "name": "genomic_resource.yaml",
-        "size": 654
+        "size": 1374
       },
       {
         "md5": "bb4db0117b174a1114fc1ae0143a8fb6",
         "name": "mini_positionscore_interval_tsv_1.tsv",
         "size": 54
-      },
-      {
-        "md5": "f51c5bd00479bf6d900e3c2836a298ac",
-        "name": "scores_graph.png",
-        "size": 27180
       },
       {
         "md5": "b1c28d9eef0fc3f9934e4d9ec943975f",
@@ -2121,14 +2060,14 @@
         "size": 1453
       },
       {
-        "md5": "e57a9cb6e79186f6a80b4cff4fa512ff",
+        "md5": "9da992c53f2e6c809f27e808f28a609c",
         "name": "statistics/histogram_posint_tsv_1.png",
-        "size": 10601
+        "size": 15790
       },
       {
-        "md5": "7e9af37da789a705d841e7ee589b8b92",
+        "md5": "74ce9c8ba74c09bb42ee55a7a99ea9d4",
         "name": "statistics/histogram_posint_tsv_1.yaml",
-        "size": 1453
+        "size": 534
       },
       {
         "md5": "4061c13a5c9c211c90fc706f59d1abc8",
@@ -2141,9 +2080,9 @@
         "size": 1453
       },
       {
-        "md5": "5de944d3a7dab2df1e2e1207bf4e8c0e",
+        "md5": "4076b69bcd00a3a09d35e2137cb16fd3",
         "name": "statistics/stats_hash",
-        "size": 865
+        "size": 864
       }
     ],
     "version": "0"
@@ -2151,7 +2090,7 @@
   {
     "config": {
       "meta": {
-        "description": "a description\n",
+        "description": "This toy allele score resource demonstrates how allele-level scores can be stored in a VCF file and queried as a bgzip-compressed, tabix-indexed resource. The VCF contains three toy variants on the mini genome and defines three INFO fields: an integer score, a floating-point score, and a string score. Since the resource configuration does not list scores individually, GAIn extracts all the available allele scores from the VCF INFO field definitions.\n\nThe accompanying ``dataprep.sh`` script extracts the VCF header into ``mini_vcf.header.vcf``, compresses both ``mini_vcf.vcf`` and ``mini_vcf.header.vcf`` with ``bgzip``, and creates tabix indexes for both compressed files using ``tabix -p vcf``. \n",
         "labels": {
           "reference_genome": "mini_genome"
         },
@@ -2172,9 +2111,9 @@
         "size": 652
       },
       {
-        "md5": "c93efbb49319003dae1e0a88841f0dfd",
+        "md5": "14bb3546e8aa48c9060190972d36a1a9",
         "name": "genomic_resource.yaml",
-        "size": 228
+        "size": 924
       },
       {
         "md5": "145d88310a5e372a824c7b203a7bf5ab",
@@ -2207,34 +2146,34 @@
         "size": 126
       },
       {
-        "md5": "c0d6b41aea76583d59c58772d3f57b00",
+        "md5": "b50a7be329c030629110d489365fd929",
         "name": "statistics/histogram_vcf_1_float.png",
-        "size": 15197
+        "size": 20396
       },
       {
-        "md5": "044ee109e8e0e1f9c925b2c00f782f73",
+        "md5": "ca2152b6146a8cbcd899fbf81fcd2da4",
         "name": "statistics/histogram_vcf_1_float.yaml",
-        "size": 2863
+        "size": 3573
       },
       {
-        "md5": "10457fac346e1699386e636515f20eaa",
+        "md5": "62736f0bb42e92780335692cdb0fe109",
         "name": "statistics/histogram_vcf_1_int.png",
-        "size": 11552
+        "size": 16986
       },
       {
-        "md5": "92a1c68452f1c8a4391a87b94ce49da1",
+        "md5": "e37cc7cc64c06de83b5ad6cac73b309f",
         "name": "statistics/histogram_vcf_1_int.yaml",
-        "size": 1579
+        "size": 2289
       },
       {
-        "md5": "1a614103b01620cbb924c7fb39062ad9",
+        "md5": "5929bfac27de991671858903c17cd8d0",
         "name": "statistics/histogram_vcf_1_str.png",
-        "size": 9614
+        "size": 14877
       },
       {
-        "md5": "a31e1456095f2e2d7597b7a5bebcfc4b",
+        "md5": "547a5877d570162fb059afca2901ff2c",
         "name": "statistics/histogram_vcf_1_str.yaml",
-        "size": 107
+        "size": 186
       },
       {
         "md5": "e146e5fe87f2fe48ec4c5e873b3fdf78",
@@ -2247,7 +2186,7 @@
   {
     "config": {
       "meta": {
-        "description": "a description\n",
+        "description": "This toy allele score resource demonstrates how allele-level scores can be stored in a VCF file and queried as a bgzip-compressed, tabix-indexed resource. The VCF contains three toy variants on the mini genome and defines three INFO fields: an integer score, a floating-point score, and a string score. This resource is similar to ``mini_vcf_all``, but the VCF records intentionally omit one INFO value in each variant record. It demonstrates how GAIn handles allele scores that are defined in the VCF header but missing for some individual alleles.\n\nThe accompanying ``dataprep.sh`` script extracts the VCF header into ``mini_vcf.header.vcf``, compresses both ``mini_vcf.vcf`` and ``mini_vcf.header.vcf`` with ``bgzip``, and creates tabix indexes for both compressed files using ``tabix -p vcf``. \n",
         "labels": {
           "reference_genome": "mini_genome"
         },
@@ -2268,9 +2207,9 @@
         "size": 652
       },
       {
-        "md5": "911c391f4317e42510cecae4fd0ce6a9",
+        "md5": "efb1f9b205593ac7363509d7b7b64fa3",
         "name": "genomic_resource.yaml",
-        "size": 227
+        "size": 1018
       },
       {
         "md5": "145d88310a5e372a824c7b203a7bf5ab",
@@ -2303,34 +2242,34 @@
         "size": 126
       },
       {
-        "md5": "afbb1807d0a4f84e70ded8589c3b7c42",
+        "md5": "3f6f8a0a07e0a502f66f023bd1351110",
         "name": "statistics/histogram_vcf_1_float.png",
-        "size": 11953
+        "size": 17372
       },
       {
-        "md5": "b40e7ab0a53db83b97b539335d15feee",
+        "md5": "dae676ba2dad769c598efb5b0208b871",
         "name": "statistics/histogram_vcf_1_float.yaml",
-        "size": 2863
+        "size": 3573
       },
       {
-        "md5": "7837d4c4bae00f5f67119e3ec3df5d20",
+        "md5": "cc7f4f8e69c000526c0a2f2541e5a017",
         "name": "statistics/histogram_vcf_1_int.png",
-        "size": 11172
+        "size": 16521
       },
       {
-        "md5": "0f555d9ba0cb4bb2e895f68058771986",
+        "md5": "05cd7c9adcafc50f85af53d8517ddcde",
         "name": "statistics/histogram_vcf_1_int.yaml",
-        "size": 1404
+        "size": 2114
       },
       {
-        "md5": "704b75737a0400725f53bb71e16a0434",
+        "md5": "6e21dc9efe3fbcdd79e27f53c88504bb",
         "name": "statistics/histogram_vcf_1_str.png",
-        "size": 9376
+        "size": 14731
       },
       {
-        "md5": "c9522fde217656af0c43f1e11830a5ab",
+        "md5": "c3dc5d5841c5a4af627691a6f84b5fb4",
         "name": "statistics/histogram_vcf_1_str.yaml",
-        "size": 97
+        "size": 171
       },
       {
         "md5": "a199f4eaa2d19dfdcb216bd02d45f60d",
@@ -2343,7 +2282,7 @@
   {
     "config": {
       "meta": {
-        "description": "a description\n",
+        "description": "This toy allele score resource demonstrates how selected allele-level scores can be stored in a VCF file and queried as a bgzip-compressed, tabix-indexed resource. The VCF contains six toy variants on the mini genome and defines INFO fields for integer, floating-point, and string scores. Unlike mini_vcf_all, this resource lists scores explicitly in the resource configuration rather than extracting all INFO fields automatically.\n\nThis resource is designed to demonstrate custom plotting for a categorical allele score. The string INFO field is configured as a categorical score, and its histogram uses the custom plotting function customplot.py:plot_clnsig. This allows the resource to test how GAIn handles user-defined histogram plots in addition to standard VCF-based allele score annotation.\n\nThe accompanying ``dataprep.sh`` script extracts the VCF header into ``mini_vcf.header.vcf``, compresses both ``mini_vcf.vcf`` and ``mini_vcf.header.vcf`` with ``bgzip``, and creates tabix indexes for both compressed files using ``tabix -p vcf``. \n",
         "labels": {
           "reference_genome": "mini_genome"
         },
@@ -2399,9 +2338,9 @@
         "size": 652
       },
       {
-        "md5": "fd012f20e1ccea7282153d32cdb48205",
+        "md5": "a82c01e109a90c3e4e9e74d611946038",
         "name": "genomic_resource.yaml",
-        "size": 790
+        "size": 1836
       },
       {
         "md5": "145d88310a5e372a824c7b203a7bf5ab",
@@ -2444,9 +2383,9 @@
         "size": 2863
       },
       {
-        "md5": "13280d8329578d280684840b32389c0b",
+        "md5": "ea179236867330b9757e876544cf616a",
         "name": "statistics/histogram_vcf_1_int.png",
-        "size": 9238
+        "size": 15906
       },
       {
         "md5": "e3d5262a7f88fb39634aba42a8b8c180",
@@ -2474,7 +2413,7 @@
   {
     "config": {
       "meta": {
-        "description": "a description\n",
+        "description": "This toy allele score resource demonstrates how a subset of allele-level scores can be selected from a VCF file and queried as a bgzip-compressed, tabix-indexed resource. The VCF contains three toy variants on the mini genome and defines three INFO fields: an integer score, a floating-point score, and a string score.\n\nUnlike ``mini_vcf_all``, this resource specifies only two of the available INFO fields in the resource configuration: ``vcf_1_int`` and ``vcf_1_str``. Therefore, GAIn extracts only these two allele scores from the VCF, while the floating-point INFO field is ignored by this resource.\n",
         "labels": {
           "reference_genome": "mini_genome"
         },
@@ -2520,9 +2459,9 @@
         "size": 652
       },
       {
-        "md5": "d3091f4defef8af2bd79d22329fda3db",
+        "md5": "4871ae393eff08534db7e6d105da8a17",
         "name": "genomic_resource.yaml",
-        "size": 611
+        "size": 1208
       },
       {
         "md5": "145d88310a5e372a824c7b203a7bf5ab",
@@ -2565,24 +2504,24 @@
         "size": 2863
       },
       {
-        "md5": "a00e663501f19a502bba695d77ef7e32",
+        "md5": "d583cc6565d07953ccfad5635c579124",
         "name": "statistics/histogram_vcf_1_int.png",
-        "size": 8696
+        "size": 15614
       },
       {
-        "md5": "5a1ed30054d8a5f94f69d1d4a6f74b67",
+        "md5": "03a23739c87cd363f4dabb0041e1e411",
         "name": "statistics/histogram_vcf_1_int.yaml",
-        "size": 318
+        "size": 488
       },
       {
-        "md5": "1a614103b01620cbb924c7fb39062ad9",
+        "md5": "5929bfac27de991671858903c17cd8d0",
         "name": "statistics/histogram_vcf_1_str.png",
-        "size": 9614
+        "size": 14877
       },
       {
-        "md5": "a31e1456095f2e2d7597b7a5bebcfc4b",
+        "md5": "547a5877d570162fb059afca2901ff2c",
         "name": "statistics/histogram_vcf_1_str.yaml",
-        "size": 107
+        "size": 186
       },
       {
         "md5": "e11e9b6a1a06a1413b19bf7cc88837dc",

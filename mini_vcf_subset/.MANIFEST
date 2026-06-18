@@ -1,9 +1,9 @@
 - md5: c106765c88b8bf4cbf618498b821313c
   name: dataprep.sh
   size: 652
-- md5: d3091f4defef8af2bd79d22329fda3db
+- md5: 4871ae393eff08534db7e6d105da8a17
   name: genomic_resource.yaml
-  size: 611
+  size: 1208
 - md5: 145d88310a5e372a824c7b203a7bf5ab
   name: mini_vcf.header.vcf
   size: 370
@@ -28,18 +28,18 @@
 - md5: 044ee109e8e0e1f9c925b2c00f782f73
   name: statistics/histogram_vcf_1_float.yaml
   size: 2863
-- md5: a00e663501f19a502bba695d77ef7e32
+- md5: d583cc6565d07953ccfad5635c579124
   name: statistics/histogram_vcf_1_int.png
-  size: 8696
-- md5: 5a1ed30054d8a5f94f69d1d4a6f74b67
+  size: 15614
+- md5: 03a23739c87cd363f4dabb0041e1e411
   name: statistics/histogram_vcf_1_int.yaml
-  size: 318
-- md5: 1a614103b01620cbb924c7fb39062ad9
+  size: 488
+- md5: 5929bfac27de991671858903c17cd8d0
   name: statistics/histogram_vcf_1_str.png
-  size: 9614
-- md5: a31e1456095f2e2d7597b7a5bebcfc4b
+  size: 14877
+- md5: 547a5877d570162fb059afca2901ff2c
   name: statistics/histogram_vcf_1_str.yaml
-  size: 107
+  size: 186
 - md5: e11e9b6a1a06a1413b19bf7cc88837dc
   name: statistics/stats_hash
   size: 882

@@ -282,7 +282,9 @@
                               a:hover {
                                 color: #4C93C9;
                               }
-                            </style><p>a description</p>
+                            </style><p>This toy allele score resource demonstrates how allele-level scores can be stored in a VCF file and queried as a bgzip-compressed, tabix-indexed resource. The VCF contains three toy variants on the mini genome and defines three INFO fields: an integer score, a floating-point score, and a string score. Since the resource configuration does not list scores individually, GAIn extracts all the available allele scores from the VCF INFO field definitions.</p>
+
+<p>The accompanying <code>dataprep.sh</code> script extracts the VCF header into <code>mini_vcf.header.vcf</code>, compresses both <code>mini_vcf.vcf</code> and <code>mini_vcf.header.vcf</code> with <code>bgzip</code>, and creates tabix indexes for both compressed files using <code>tabix -p vcf</code>. </p>
 
                         </template>
                     </div>
@@ -456,8 +458,8 @@
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">228.0 B</td>
-                <td class="nowrap">c93efbb49319003dae1e0a88841f0dfd</td>
+                <td class="nowrap">924.0 B</td>
+                <td class="nowrap">14bb3546e8aa48c9060190972d36a1a9</td>
             </tr>
             <tr>
                 

@@ -282,8 +282,73 @@
                               a:hover {
                                 color: #4C93C9;
                               }
-                            </style><p>my description
-<img src="./scores_graph.png" alt="The score graphs" title="SSSS" /></p>
+                            </style><p>This toy position score resource demonstrates how per-position genomic scores can be stored in a tab-separated file and queried as a tabix-indexed resource. The file has no header and contains three columns: chromosome, 1-based position, and numeric score. The score applies to the specified position on the mini genome. This resource contains the same toy position-score information as the accompanying 0-based position score resource, <code>mini_positionscore_tabix_0</code>, but stores positions using 1-based coordinates.</p>
+
+<p>Data, shown in compact form:</p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:center;">Position</th>
+  <th style="text-align:center;">chr1</th>
+  <th style="text-align:center;">chr2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center;">1</td>
+  <td style="text-align:center;">0.0</td>
+  <td style="text-align:center;">0.0</td>
+</tr>
+<tr>
+  <td style="text-align:center;">2</td>
+  <td style="text-align:center;">0.1</td>
+  <td style="text-align:center;">0.1</td>
+</tr>
+<tr>
+  <td style="text-align:center;">3</td>
+  <td style="text-align:center;">0.2</td>
+  <td style="text-align:center;">0.2</td>
+</tr>
+<tr>
+  <td style="text-align:center;">4</td>
+  <td style="text-align:center;">0.3</td>
+  <td style="text-align:center;">0.3</td>
+</tr>
+<tr>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">0.4</td>
+  <td style="text-align:center;">0.4</td>
+</tr>
+<tr>
+  <td style="text-align:center;">6</td>
+  <td style="text-align:center;">0.5</td>
+  <td style="text-align:center;">0.5</td>
+</tr>
+<tr>
+  <td style="text-align:center;">7</td>
+  <td style="text-align:center;">0.6</td>
+  <td style="text-align:center;">0.6</td>
+</tr>
+<tr>
+  <td style="text-align:center;">8</td>
+  <td style="text-align:center;">0.7</td>
+  <td style="text-align:center;">0.7</td>
+</tr>
+<tr>
+  <td style="text-align:center;">9</td>
+  <td style="text-align:center;">0.8</td>
+  <td style="text-align:center;">0.8</td>
+</tr>
+<tr>
+  <td style="text-align:center;">10</td>
+  <td style="text-align:center;">0.9</td>
+  <td style="text-align:center;">0.9</td>
+</tr>
+</tbody>
+</table>
+
+<p>The accompanying dataprep.sh script compresses mini_positionscore_tabix_1.tsv with bgzip and creates a tabix index using the chromosome column and the position column.</p>
 
                         </template>
                     </div>
@@ -333,7 +398,7 @@
             
 
             <td>
-                <div>a description</div>
+                <div>Toy numeric 1-based position score from a tabix-indexed TSV file</div>
                 
                     <div class="text-muted">
                         Small values desc: less
@@ -393,8 +458,8 @@
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">657.0 B</td>
-                <td class="nowrap">07f2ae100957f5cab7a3c2329b62e206</td>
+                <td class="nowrap">1.63 KB</td>
+                <td class="nowrap">ad07e792e88bdd176d5a2d2263127aa9</td>
             </tr>
             <tr>
                 
@@ -422,15 +487,6 @@
                 
                 <td class="nowrap">118.0 B</td>
                 <td class="nowrap">3e87d3b1263695c09852d633c92c0532</td>
-            </tr>
-            <tr>
-                
-                    <td class="nowrap">
-                        <a href='scores_graph.png'>scores_graph.png</a>
-                    </td>
-                
-                <td class="nowrap">28.41 KB</td>
-                <td class="nowrap">4a07f7e142722c68ff80f5dea9f78248</td>
             </tr>
             <tr>
                 

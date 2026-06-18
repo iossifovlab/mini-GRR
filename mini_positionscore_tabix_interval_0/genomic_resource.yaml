@@ -20,13 +20,13 @@ table:
 scores:
   - id: posint_tabix_0
     type: float
-    desc: "a description"
+    desc: "Toy numeric 0-based interval position score from a tabix-indexed TSV file"
     large_values_desc: "more"
     small_values_desc: "less"
     index: 3
     histogram:
       type: number
-      number_of_bins: 100
+      number_of_bins: 10
       view_range:
         min: 0.0
         max: 1.0
@@ -38,6 +38,17 @@ meta:
     0-based tabix position score (interval)
 
   description: |
-    
-    my description
-    ![The score graphs](./scores_graph.png "SSSS")
+    This toy position score resource demonstrates how genomic scores can be stored in a tab-separated file with chromosome, start, end, and score columns, and queried as a tabix-indexed resource. The file has no header and uses 0-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.
+
+    This resource contains the same toy position-score information as the accompanying 1-based interval position score resource, ``mini_positionscore_tabix_interval_1``, but stores coordinates using 0-based positions.
+
+    The accompanying ``dataprep.sh`` script compresses ``mini_positionscore_interval_tabix_0.tsv`` with ``bgzip`` and creates a tabix index using the chromosome, start, and end columns.
+
+    data:
+
+    | Chromosome | Start | End | Score |
+    |:----------:|:-----:|:---:|:-----:|
+    | chr1 | 0 | 5 | 0.0 |
+    | chr1 | 5 | 10 | 0.1 |
+    | chr2 | 0 | 5 | 0.2 |
+    | chr2 | 5 | 10 | 0.3 |

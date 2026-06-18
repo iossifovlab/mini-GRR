@@ -1,8 +1,13 @@
-config:
-  type: categorical
-  value_order: null
-  y_log_scale: false
-values:
-  str1: 1
-  str2: 1
-  str3: 1
+{
+  "config": {
+    "type": "categorical",
+    "value_order": null,
+    "y_log_scale": false,
+    "label_rotation": 0
+  },
+  "values": {
+    "str1": 1,
+    "str2": 1,
+    "str3": 1
+  }
+}

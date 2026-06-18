@@ -20,7 +20,7 @@ table:
 scores:
   - id: pos_bedgraph_0
     type: float
-    desc: "Toy numeric position score from a BEDGraph file"
+    desc: "Toy numeric position score from a bedgraph file"
     large_values_desc: "more"
     small_values_desc: "less"
     index: 3

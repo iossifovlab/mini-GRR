@@ -4,10 +4,8 @@ type: position_score
 
 table:
   filename: mini_positionscore_tsv_0.tsv
-  # header_mode: none
   zero_based: True
 
-  # defined by score_type
   chrom:
     index: 0
   pos_begin:
@@ -19,13 +17,13 @@ table:
 scores:
   - id: pos_tsv_0
     type: float
-    desc: "a description"
+    desc: "Toy 0-based numeric position score from an uncompressed TSV file"
     large_values_desc: "more"
     small_values_desc: "less"
     index: 2
     histogram:
       type: number
-      number_of_bins: 100
+      number_of_bins: 10
       view_range:
         min: 0.0
         max: 1.0
@@ -38,5 +36,21 @@ meta:
 
   description: |
     
-    my description
-    ![The score graphs](./scores_graph.png "SSSS")
+    This toy position score resource demonstrates how per-position genomic scores can be stored in an uncompressed tab-separated file. The file has no header and contains three columns: chromosome, 0-based position, and numeric score. The score applies to the specified position on the mini genome.
+
+    This resource contains the same toy position-score information as the accompanying 1-based TSV position score resource, ``mini_positionscore_tsv_1``, but stores positions using 0-based coordinates.
+
+    Data, shown in compact form:
+
+    | Position | chr1 score | chr2 score |
+    |:--------:|:----------:|:----------:|
+    | 0 | 0.0 | 0.0 |
+    | 1 | 0.1 | 0.1 |
+    | 2 | 0.2 | 0.2 |
+    | 3 | 0.3 | 0.3 |
+    | 4 | 0.4 | 0.4 |
+    | 5 | 0.5 | 0.5 |
+    | 6 | 0.6 | 0.6 |
+    | 7 | 0.7 | 0.7 |
+    | 8 | 0.8 | 0.8 |
+    | 9 | 0.9 | 0.9 |

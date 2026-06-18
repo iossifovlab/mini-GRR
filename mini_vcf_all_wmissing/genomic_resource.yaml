@@ -9,7 +9,9 @@ meta:
   summary: |
       1-based vcf allele score
   description: |
-      a description
+      This toy allele score resource demonstrates how allele-level scores can be stored in a VCF file and queried as a bgzip-compressed, tabix-indexed resource. The VCF contains three toy variants on the mini genome and defines three INFO fields: an integer score, a floating-point score, and a string score. This resource is similar to ``mini_vcf_all``, but the VCF records intentionally omit one INFO value in each variant record. It demonstrates how GAIn handles allele scores that are defined in the VCF header but missing for some individual alleles.
+
+      The accompanying ``dataprep.sh`` script extracts the VCF header into ``mini_vcf.header.vcf``, compresses both ``mini_vcf.vcf`` and ``mini_vcf.header.vcf`` with ``bgzip``, and creates tabix indexes for both compressed files using ``tabix -p vcf``. 
 
   labels:
     reference_genome: mini_genome

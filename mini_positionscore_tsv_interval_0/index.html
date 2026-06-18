@@ -282,8 +282,48 @@
                               a:hover {
                                 color: #4C93C9;
                               }
-                            </style><p>my description
-<img src="./scores_graph.png" alt="The score graphs" title="SSSS" /></p>
+                            </style><p>This toy position score resource demonstrates how genomic scores can be stored in an uncompressed tab-separated file with chromosome, start, end, and score columns. The file has no header and uses 0-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.</p>
+
+<p>This resource contains the same toy position-score information as the accompanying 1-based interval TSV position score resource, <code>mini_positionscore_tsv_interval_1</code>, but stores coordinates using 0-based positions.</p>
+
+<p>Example data:</p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:center;">Chromosome</th>
+  <th style="text-align:center;">Start</th>
+  <th style="text-align:center;">End</th>
+  <th style="text-align:center;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center;">chr1</td>
+  <td style="text-align:center;">0</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">0.0</td>
+</tr>
+<tr>
+  <td style="text-align:center;">chr1</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">10</td>
+  <td style="text-align:center;">0.1</td>
+</tr>
+<tr>
+  <td style="text-align:center;">chr2</td>
+  <td style="text-align:center;">0</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">0.2</td>
+</tr>
+<tr>
+  <td style="text-align:center;">chr2</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">10</td>
+  <td style="text-align:center;">0.3</td>
+</tr>
+</tbody>
+</table>
 
                         </template>
                     </div>
@@ -333,7 +373,7 @@
             
 
             <td>
-                <div>a description</div>
+                <div>Toy 0-based numeric interval position score from an uncompressed TSV file</div>
                 
                     <div class="text-muted">
                         Small values desc: less
@@ -384,8 +424,8 @@
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">673.0 B</td>
-                <td class="nowrap">c0071bae9ba15cfe615dd1add8046434</td>
+                <td class="nowrap">1.34 KB</td>
+                <td class="nowrap">c52cd26fc9942802db383750ca0df745</td>
             </tr>
             <tr>
                 
@@ -395,15 +435,6 @@
                 
                 <td class="nowrap">54.0 B</td>
                 <td class="nowrap">41ca2ab0b1e7ef18110ca3f66b1f7a55</td>
-            </tr>
-            <tr>
-                
-                    <td class="nowrap">
-                        <a href='scores_graph.png'>scores_graph.png</a>
-                    </td>
-                
-                <td class="nowrap">26.9 KB</td>
-                <td class="nowrap">f103f2cc8eae89781863024ca947162b</td>
             </tr>
             <tr>
                 
