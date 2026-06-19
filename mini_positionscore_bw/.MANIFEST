@@ -4,9 +4,9 @@
 - md5: 15b3d3034634b2686c11d21d1e5c0fb4
   name: dataprep.sh
   size: 191
-- md5: 21925e04b833f5244022fb848e889b1e
+- md5: f42d6b0503316d6a5700272aacdbb00e
   name: genomic_resource.yaml
-  size: 809
+  size: 1662
 - md5: 41ca2ab0b1e7ef18110ca3f66b1f7a55
   name: mini_positionscore_bw_0.bedgraph
   size: 54
@@ -16,18 +16,12 @@
 - md5: 06b6d4a2da4a03f2865a6dd8f36482ec
   name: sorted_mini_positionscore_bw_0.bedgraph
   size: 55
-- md5: 43f9711dc8859a62c5f61443635185d0
-  name: statistics/histogram_bw_0based.png
-  size: 10545
-- md5: 25b0b618a2cf54fe7c99ed66ced7c745
-  name: statistics/histogram_bw_0based.yaml
-  size: 1469
-- md5: bbd8eca06da04c6ace31529ec442a474
+- md5: 3f5964d8c197f742502ad358ddf5e9dd
+  name: statistics/histogram_pos_bw_0.json
+  size: 550
+- md5: e84004a4cda228cc4556370fa60d1fd5
   name: statistics/histogram_pos_bw_0.png
-  size: 10442
-- md5: 25b0b618a2cf54fe7c99ed66ced7c745
-  name: statistics/histogram_pos_bw_0.yaml
-  size: 1469
-- md5: 4f9e2bc7a981f0ecea79ca90b84884d5
+  size: 15679
+- md5: adc606d2ff8f71dba5c59b111b0d45d6
   name: statistics/stats_hash
-  size: 839
+  size: 807

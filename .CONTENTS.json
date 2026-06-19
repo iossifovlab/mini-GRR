@@ -887,14 +887,14 @@
   {
     "config": {
       "meta": {
-        "description": "\nbw description\n![The score graphs](./scores_graph.png \"SSSS\")",
-        "summary": "0-based bw position score\n"
+        "description": "This toy position score resource demonstrates how genomic scores can be stored in BigWig format. This resource contains the same toy position-score information as the accompanying interval bedGraph resource, `mini_positionscore_interval_bedgraph_0`, but stores the scores as a binary indexed BigWig file.\n\nThe accompanying ``dataprep.sh`` script first sorts ``mini_positionscore_bw_0.bedgraph`` by chromosome and start position, then uses ``bedGraphToBigWig`` together with ``chrom.sizes`` to create ``mini_positionscore_bw_0.bw``. Unlike tabix-based resources, the BigWig file is a binary indexed file and does not require a separate tabix index. \n\nSource bedGraph data: \n| Chromosome | Start | End | Score | \n|:----------:|:-----:|:---:|:-----:| \n| chr1 | 0 | 5 | 0.0 | \n| chr1 | 5 | 10 | 0.1 | \n| chr2 | 0 | 5 | 0.2 | \n| chr2 | 5 | 10 | 0.3 |",
+        "summary": "0-based BigWig position score\n"
       },
       "scores": [
         {
-          "desc": "bw score",
+          "desc": "Toy numeric position score from a BigWig file",
           "histogram": {
-            "number_of_bins": 100,
+            "number_of_bins": 10,
             "type": "number",
             "view_range": {
               "max": 1.0,
@@ -914,7 +914,6 @@
           "index": 0
         },
         "filename": "mini_positionscore_bw_0.bw",
-        "header_mode": "none",
         "pos_begin": {
           "index": 1
         },
@@ -938,9 +937,9 @@
         "size": 191
       },
       {
-        "md5": "21925e04b833f5244022fb848e889b1e",
+        "md5": "f42d6b0503316d6a5700272aacdbb00e",
         "name": "genomic_resource.yaml",
-        "size": 809
+        "size": 1662
       },
       {
         "md5": "41ca2ab0b1e7ef18110ca3f66b1f7a55",
@@ -958,29 +957,19 @@
         "size": 55
       },
       {
-        "md5": "43f9711dc8859a62c5f61443635185d0",
-        "name": "statistics/histogram_bw_0based.png",
-        "size": 10545
+        "md5": "3f5964d8c197f742502ad358ddf5e9dd",
+        "name": "statistics/histogram_pos_bw_0.json",
+        "size": 550
       },
       {
-        "md5": "25b0b618a2cf54fe7c99ed66ced7c745",
-        "name": "statistics/histogram_bw_0based.yaml",
-        "size": 1469
-      },
-      {
-        "md5": "bbd8eca06da04c6ace31529ec442a474",
+        "md5": "e84004a4cda228cc4556370fa60d1fd5",
         "name": "statistics/histogram_pos_bw_0.png",
-        "size": 10442
+        "size": 15679
       },
       {
-        "md5": "25b0b618a2cf54fe7c99ed66ced7c745",
-        "name": "statistics/histogram_pos_bw_0.yaml",
-        "size": 1469
-      },
-      {
-        "md5": "4f9e2bc7a981f0ecea79ca90b84884d5",
+        "md5": "adc606d2ff8f71dba5c59b111b0d45d6",
         "name": "statistics/stats_hash",
-        "size": 839
+        "size": 807
       }
     ],
     "version": "0"
@@ -1837,7 +1826,7 @@
   {
     "config": {
       "meta": {
-        "description": "This toy position score resource demonstrates how genomic scores can be stored in an uncompressed tab-separated file with chromosome, start, end, and score columns. The file has no header and uses 0-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.\n\nThis resource contains the same toy position-score information as the accompanying 1-based interval TSV position score resource, ``mini_positionscore_tsv_interval_1``, but stores coordinates using 0-based positions.\n\nExample data:\n\n| Chromosome | Start | End | Score |\n|:----------:|:-----:|:---:|:-----:|\n| chr1 | 0 | 5 | 0.0 |\n| chr1 | 5 | 10 | 0.1 |\n| chr2 | 0 | 5 | 0.2 |\n| chr2 | 5 | 10 | 0.3 |",
+        "description": "This toy position score resource demonstrates how genomic scores can be stored in an uncompressed tab-separated file with chromosome, start, end, and score columns. The file has no header and uses 0-based coordinates on the mini genome. The fourth column contains the numeric score assigned to each region.\n\nThis resource contains the same toy position-score information as the accompanying 1-based interval TSV position score resource, ``mini_positionscore_tsv_interval_1``, but stores coordinates using 0-based positions.\n\nData:\n\n| Chromosome | Start | End | Score |\n|:----------:|:-----:|:---:|:-----:|\n| chr1 | 0 | 5 | 0.0 |\n| chr1 | 5 | 10 | 0.1 |\n| chr2 | 0 | 5 | 0.2 |\n| chr2 | 5 | 10 | 0.3 |",
         "summary": "0-based tsv position score (interval)\n"
       },
       "scores": [
@@ -1879,9 +1868,9 @@
     "id": "mini_positionscore_tsv_interval_0",
     "manifest": [
       {
-        "md5": "c52cd26fc9942802db383750ca0df745",
+        "md5": "28fcafdecf8796e7c2ec3781bf71a7ce",
         "name": "genomic_resource.yaml",
-        "size": 1375
+        "size": 1367
       },
       {
         "md5": "41ca2ab0b1e7ef18110ca3f66b1f7a55",

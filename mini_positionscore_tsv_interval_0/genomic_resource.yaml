@@ -40,7 +40,7 @@ meta:
 
     This resource contains the same toy position-score information as the accompanying 1-based interval TSV position score resource, ``mini_positionscore_tsv_interval_1``, but stores coordinates using 0-based positions.
 
-    Example data:
+    Data:
 
     | Chromosome | Start | End | Score |
     |:----------:|:-----:|:---:|:-----:|

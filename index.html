@@ -350,7 +350,7 @@
 
 
         const start = async (sqlite3) => {
-          const response = await fetch(`${window.location.origin}/.CONTENTS.sqlite3.gz?v=b200898e24884eb1bc453d4e7e23711e`)
+          const response = await fetch(`${window.location.origin}/.CONTENTS.sqlite3.gz?v=3ac29849074ddce43cbd7bfb6a45e5b3`)
           const ds = new DecompressionStream('gzip');
           const decompressedResponse = new Response(response.body.pipeThrough(ds));
           const arrayBuffer = await decompressedResponse.arrayBuffer()
@@ -1004,12 +1004,12 @@
                 </div>
               </td>
               <td class="nowrap version-cell">0</td>
-              <td class="nowrap size-cell">37.92 KB</td>
+              <td class="nowrap size-cell">31.21 KB</td>
               <td
                 class="nowrap"
-                title="0-based bw position score
+                title="0-based BigWig position score
 "
-              >0-based bw position score
+              >0-based BigWig position score
 </td>
               </tr>
             <tr id="mini_positionscore_tabix_0">
@@ -1164,7 +1164,7 @@
                 </div>
               </td>
               <td class="nowrap version-cell">0</td>
-              <td class="nowrap size-cell">77.58 KB</td>
+              <td class="nowrap size-cell">77.57 KB</td>
               <td
                 class="nowrap"
                 title="0-based tsv position score (interval)

@@ -254,7 +254,7 @@
                 <th>Summary</th>
                 <td>
                     <div>
-                        <template shadowrootmode="open">0-based bw position score
+                        <template shadowrootmode="open">0-based BigWig position score
 
                         </template>
                     </div>
@@ -282,8 +282,48 @@
                               a:hover {
                                 color: #4C93C9;
                               }
-                            </style><p>bw description
-<img src="./scores_graph.png" alt="The score graphs" title="SSSS" /></p>
+                            </style><p>This toy position score resource demonstrates how genomic scores can be stored in BigWig format. This resource contains the same toy position-score information as the accompanying interval bedGraph resource, <code>mini_positionscore_interval_bedgraph_0</code>, but stores the scores as a binary indexed BigWig file.</p>
+
+<p>The accompanying <code>dataprep.sh</code> script first sorts <code>mini_positionscore_bw_0.bedgraph</code> by chromosome and start position, then uses <code>bedGraphToBigWig</code> together with <code>chrom.sizes</code> to create <code>mini_positionscore_bw_0.bw</code>. Unlike tabix-based resources, the BigWig file is a binary indexed file and does not require a separate tabix index. </p>
+
+<p>Source bedGraph data: </p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:center;">Chromosome</th>
+  <th style="text-align:center;">Start</th>
+  <th style="text-align:center;">End</th>
+  <th style="text-align:center;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center;">chr1</td>
+  <td style="text-align:center;">0</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">0.0</td>
+</tr>
+<tr>
+  <td style="text-align:center;">chr1</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">10</td>
+  <td style="text-align:center;">0.1</td>
+</tr>
+<tr>
+  <td style="text-align:center;">chr2</td>
+  <td style="text-align:center;">0</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">0.2</td>
+</tr>
+<tr>
+  <td style="text-align:center;">chr2</td>
+  <td style="text-align:center;">5</td>
+  <td style="text-align:center;">10</td>
+  <td style="text-align:center;">0.3</td>
+</tr>
+</tbody>
+</table>
 
                         </template>
                     </div>
@@ -333,7 +373,7 @@
             
 
             <td>
-                <div>bw score</div>
+                <div>Toy numeric position score from a BigWig file</div>
                 
                     <div class="text-muted">
                         Small values desc: less
@@ -402,8 +442,8 @@
                         <a href='genomic_resource.yaml'>genomic_resource.yaml</a>
                     </td>
                 
-                <td class="nowrap">809.0 B</td>
-                <td class="nowrap">21925e04b833f5244022fb848e889b1e</td>
+                <td class="nowrap">1.62 KB</td>
+                <td class="nowrap">f42d6b0503316d6a5700272aacdbb00e</td>
             </tr>
             <tr>
                 
