@@ -2,8 +2,6 @@ type: genome
 
 filename: mini.genome.fa
 
-chrom_prefix: chr
-
 meta:
   summary: |
     Toy genome with two chromosomes
